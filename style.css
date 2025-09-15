@@ -16,8 +16,35 @@ body {
   font-style: normal;
 }
 
+.lexend-item-title {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}  
+
 h1 {
     font-size: 10em;
+}
+
+.horizontal-line {
+    width: 98%;
+    border-top: 10px solid black;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.thin-horizontal-line {
+    width: 98%;
+    border-top: 5px solid black;
+    margin: 20px auto;
+    margin-top: 0;
+    border-radius: 2.5px;
+    display: block;
+}
+
+#market-item__bottom-line {
+    margin-bottom: 0;
 }
 
 .container {
@@ -25,13 +52,22 @@ h1 {
     flex-wrap: wrap;
     margin: 10px auto;
     width: 94%;
-    border: black 5px solid;
+    border: rgb(56, 181, 219) 5px solid;
     border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .market-item {
-    width: 22%;
-    height: 300px;
+    padding: .5%;
+
+    width: 300px;
+    height: 375px;
+    background-color: rgba(60, 150, 225, 0.07);
+    margin: 2vw;
+
+    border: rgb(5, 37, 58) 7px solid;
+    border-radius: 13px;
 }
 
 .header-div {
@@ -40,4 +76,114 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.market-item__title {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 2.3em;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.market-item__img {
+    max-width: 100%;
+    margin: auto;
+}
+
+.market-item__purchase {
+    display: flex;
+    flex-wrap: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+    padding: 4px;
+}
+
+.market-item__price-text {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 2em;
+    font-weight: 300;
+    font-style: normal;
+    margin: auto 0;
+}
+
+.market-item__purchase-button {
+    font-family: "Google Sans Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2em;
+
+    color: black;
+    border: 1px black solid;
+
+    background-color: rgb(90, 148, 165);
+    border: none;
+    border-radius: 6px;
+    width: 30%;
+    height: 100%;
+    margin: auto 0;
+}
+.market-item__purchase-button:hover {
+    color: rgb(255, 255, 255);
+
+    background-color: rgb(44, 106, 124);
+}
+.market-item__purchase-button:active {
+    animation: button-press 0.2s ease;
+}
+
+.filter-bar {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px auto;
+}
+
+.filter-bar__button {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+
+    font-size: 2.5em;
+    height: 120%;
+    width: 15%;
+    text-align: center;
+    padding: 5px auto;
+    margin: 4px;
+    color:rgb(67, 106, 133);
+}
+.filter-bar__button:hover {
+    color:rgb(5, 37, 58);
+}
+.filter-bar__button:active {  /* when i add javascript make this last */
+    animation: button-press 0.2s ease;
+    color: white;
+    background-color: rgb(5, 37, 58);
+    border-radius: 5px;
+}
+
+@keyframes button-press {
+    0% {
+        transform: scale(1);
+        background-color: rgb(51, 202, 244);
+    }
+    33% {
+        transform: scale(0.8)
+    }
+    67% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1)
+    }
 }
