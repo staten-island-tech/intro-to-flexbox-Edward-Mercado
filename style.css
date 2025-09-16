@@ -24,7 +24,7 @@ body {
 }  
 
 h1 {
-    font-size: 10em;
+    font-size: 5em;
 }
 
 .horizontal-line {
@@ -66,8 +66,14 @@ h1 {
     background-color: rgba(60, 150, 225, 0.07);
     margin: 2vw;
 
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+
     border: rgb(5, 37, 58) 7px solid;
     border-radius: 13px;
+
+    box-shadow: 2px 2px 6px 1px rgba(156, 192, 207, 0.774);
 }
 
 .header-div {
@@ -87,6 +93,14 @@ h1 {
     text-align: center;
     margin: 0 auto;
     display: block;
+}
+
+#smaller {
+    font-size: 1.8em;
+}
+
+#even-smaller {
+    font-size: 1.4em;
 }
 
 .market-item__img {
