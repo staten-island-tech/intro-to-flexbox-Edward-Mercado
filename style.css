@@ -1,12 +1,17 @@
-body, * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 10px;
+body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
 }
 
 body {
-    background-image: linear-gradient(to bottom, rgb(248, 253, 252), rgb(221, 241, 239));
+  background-image: linear-gradient(
+    to bottom,
+    rgb(248, 253, 252),
+    rgb(221, 241, 239)
+  );
 }
 
 .outfit-title {
@@ -17,278 +22,279 @@ body {
 }
 
 .lexend-item-title {
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-}  
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
 
 h1 {
-    font-size: 6em;
-    text-align: center;
+  font-size: 6em;
+  text-align: center;
 }
 
 .horizontal-line {
-    width: 98%;
-    border-top: 10px solid black;
-    margin: 20px auto;
-    border-radius: 5px;
+  width: 98%;
+  border-top: 10px solid black;
+  margin: 20px auto;
+  border-radius: 5px;
 }
 
 .thin-horizontal-line {
-    width: 98%;
-    border-top: 5px solid black;
-    margin: 20px auto;
-    margin-top: 0;
-    border-radius: 2.5px;
-    display: block;
+  width: 98%;
+  border-top: 5px solid black;
+  margin: 20px auto;
+  margin-top: 0;
+  border-radius: 2.5px;
+  display: block;
 }
 
 #market-item__bottom-line {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 10px auto;
-    width: 94%;
-    border: rgb(56, 181, 219) 5px solid;
-    border-radius: 10px;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  width: 94%;
+  border: rgb(56, 181, 219) 5px solid;
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .market-item {
-    padding: .5%;
+  padding: 0.5%;
 
-    width: 300px;
-    height: 375px;
-    background-color: rgba(60, 150, 225, 0.07);
-    margin: 2vw;
+  width: 300px;
+  height: 375px;
+  background-color: rgba(60, 150, 225, 0.07);
+  margin: 2vw;
 
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
 
-    border: rgb(5, 37, 58) 7px solid;
-    border-radius: 13px;
+  border: rgb(5, 37, 58) 7px solid;
+  border-radius: 13px;
 
-    box-shadow: 2px 2px 6px 1px rgba(156, 192, 207, 0.774);
+  box-shadow: 2px 2px 6px 1px rgba(156, 192, 207, 0.774);
 }
 
 .header-div {
-    height: 100px;
-    padding: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100px;
+  padding: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .market-item__title {
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-size: 2.3em;
-    font-weight: 500;
-    font-style: normal;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 2.3em;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
 }
 
 #smaller {
-    font-size: 1.8em;
+  font-size: 1.8em;
 }
 
 #even-smaller {
-    font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 .market-item__img {
-    max-width: 100%;
-    margin: auto;
+  max-width: 100%;
+  margin: auto;
 }
 
 .market-item__purchase {
-    display: flex;
-    flex-wrap: row nowrap;
-    justify-content: space-between;
-    width: 100%;
-    height: 10%;
-    padding: 4px;
+  display: flex;
+  flex-wrap: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+  padding: 4px;
 }
 
 .market-item__price-text {
-    font-family: "DM Serif Text", serif;
-    font-optical-sizing: auto;
-    font-size: 2em;
-    font-weight: 800;
-    font-style: normal;
-    margin: auto 0;
-    color: rgb(14, 56, 29);
-    margin-top: 4px;
+  font-family: "DM Serif Text", serif;
+  font-optical-sizing: auto;
+  font-size: 2em;
+  font-weight: 800;
+  font-style: normal;
+  margin: auto 0;
+  color: rgb(14, 56, 29);
+  margin-top: 4px;
 }
 
 .market-item__purchase-button {
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 2em;
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2em;
 
-    color: black;
-    border: 1px black solid;
+  color: black;
+  border: 1px black solid;
 
-    background-color: rgb(113, 183, 204);
-    border: none;
-    border-radius: 6px;
-    width: 30%;
-    height: 100%;
-    margin: auto 0;
-    margin-top: 4px;
+  background-color: rgb(113, 183, 204);
+  border: none;
+  border-radius: 6px;
+  width: 30%;
+  height: 100%;
+  margin: auto 0;
+  margin-top: 4px;
 }
 .market-item__purchase-button:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(44, 106, 124);
-    animation: move-button .2s ease infinite;
+  color: rgb(255, 255, 255);
+  background-color: rgb(44, 106, 124);
+  animation: move-button 0.2s ease infinite;
 }
 .market-item__purchase-button:active {
-    animation: button-press 0.2s ease;
+  animation: button-press 0.2s ease;
 }
 
 .filter-bar {
-    width: 90%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    padding: 20px auto;
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  padding: 20px auto;
 }
 
 .filter-bar__button {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bolder;
-    font-style: normal;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
 
-    font-size: 2.5em;
-    height: 120%;
-    width: 19%;
-    text-align: center;
-    padding: 5px auto;
-    margin: 4px;
-    color:rgb(67, 106, 133);
+  font-size: 2.5em;
+  height: 120%;
+  width: 19%;
+  text-align: center;
+  padding: 5px auto;
+  margin: 4px;
+  color: rgb(67, 106, 133);
 }
 .filter-bar__button:hover {
-    color:rgb(5, 37, 58);
+  color: rgb(5, 37, 58);
 }
-.filter-bar__button:active {  /* when i add javascript make this last */
-    animation: button-press 0.2s ease;
-    color: white;
-    background-color: rgb(5, 37, 58);
-    border-radius: 5px;
+.filter-bar__button:active {
+  /* when i add javascript make this last */
+  animation: button-press 0.2s ease;
+  color: white;
+  background-color: rgb(5, 37, 58);
+  border-radius: 5px;
 }
 
 .checkout {
-    width: 94%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    min-height: 300px;
-    margin: 20px auto;
-    padding: 12px;
+  width: 94%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  min-height: 300px;
+  margin: 20px auto;
+  padding: 12px;
 
-    border: 6px solid black;
-    border-radius: 10px;
-    background-color: rgba(52, 150, 216, 0.2);
+  border: 6px solid black;
+  border-radius: 10px;
+  background-color: rgba(52, 150, 216, 0.2);
 }
 
 .checkout__title {
-    font-family: "Outfit", sans-serif;
-    font-size: 5em;
-    margin-left: 1%;
+  font-family: "Outfit", sans-serif;
+  font-size: 5em;
+  margin-left: 1%;
 }
 
 .checkout__button {
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 2em;
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2em;
 
-    color: black;
-    border: 1px black solid;
+  color: black;
+  border: 1px black solid;
 
-    background-color: rgb(90, 148, 165);
-    border: none;
-    border-radius: 6px;
-    width: 100%;
-    height: 50px;
+  background-color: rgb(90, 148, 165);
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  height: 50px;
 }
 
 .checkout__button:hover {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 
-    background-color: rgb(44, 106, 124);
+  background-color: rgb(44, 106, 124);
 }
 
 .checkout__button:active {
-    animation: buy-items 0.2s ease;
+  animation: buy-items 0.2s ease;
 }
 
 @keyframes button-press {
-    0% {
-        transform: scale(1);
-        background-color: rgb(51, 202, 244);
-    }
-    33% {
-        transform: scale(0.8)
-    }
-    67% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1)
-    }
+  0% {
+    transform: scale(1);
+    background-color: rgb(51, 202, 244);
+  }
+  33% {
+    transform: scale(0.8);
+  }
+  67% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes buy-items {
-    0% {
-        transform: scale(1);
-        background-color: rgb(51, 202, 244);
-    }
-    10% {
-        transform: rotate(1deg)
-    }
-    20% {
-        transform: rotate(1.2deg)
-    }
-    60% {
-        transform: rotate(-1deg)
-    }
-    80% {
-        transform: rotate(-0.6deg)
-    }
-    100% {
-        transform: rotate(0.4deg)
-    }
+  0% {
+    transform: scale(1);
+    background-color: rgb(51, 202, 244);
+  }
+  10% {
+    transform: rotate(1deg);
+  }
+  20% {
+    transform: rotate(1.2deg);
+  }
+  60% {
+    transform: rotate(-1deg);
+  }
+  80% {
+    transform: rotate(-0.6deg);
+  }
+  100% {
+    transform: rotate(0.4deg);
+  }
 }
 
 @keyframes move-button {
-    0% {
-        transform: translateY(1px) rotate(1deg);
-    }
-    25% {
-        transform: translateY(-2px) rotate(-2deg);
-    }
-    50% {
-        transform: translateY(1px) rotate(1deg);
-    }
-    75% {
-        transform: translateY(-1px) rotate(1deg);
-    }
-    100% {
-        transform: translateY(1px) rotate(-1deg);
-    }
+  0% {
+    transform: translateY(1px) rotate(1deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(1px) rotate(-1deg);
+  }
 }
