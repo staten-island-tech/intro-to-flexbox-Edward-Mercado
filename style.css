@@ -104,12 +104,14 @@ h1 {
 }
 
 .market-item__price-text {
-    font-family: "Lexend", sans-serif;
+    font-family: "DM Serif Text", serif;
     font-optical-sizing: auto;
     font-size: 2em;
-    font-weight: 300;
+    font-weight: 800;
     font-style: normal;
     margin: auto 0;
+    color: rgb(14, 56, 29);
+    margin-top: 4px;
 }
 
 .market-item__purchase-button {
@@ -122,7 +124,7 @@ h1 {
     color: black;
     border: 1px black solid;
 
-    background-color: rgb(90, 148, 165);
+    background-color: rgb(113, 183, 204);
     border: none;
     border-radius: 6px;
     width: 30%;
@@ -132,8 +134,8 @@ h1 {
 }
 .market-item__purchase-button:hover {
     color: rgb(255, 255, 255);
-
     background-color: rgb(44, 106, 124);
+    animation: move-button .2s ease infinite;
 }
 .market-item__purchase-button:active {
     animation: button-press 0.2s ease;
@@ -242,18 +244,36 @@ h1 {
         background-color: rgb(51, 202, 244);
     }
     10% {
-        transform: rotate(2deg)
+        transform: rotate(1deg)
     }
     20% {
-        transform: rotate(2.4deg)
+        transform: rotate(1.2deg)
     }
     60% {
-        transform: rotate(-2deg)
+        transform: rotate(-1deg)
     }
     80% {
-        transform: rotate(-1.2deg)
+        transform: rotate(-0.6deg)
     }
     100% {
-        transform: rotate(0deg)
+        transform: rotate(0.4deg)
+    }
+}
+
+@keyframes move-button {
+    0% {
+        transform: translateY(1px) rotate(1deg);
+    }
+    25% {
+        transform: translateY(-2px) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(1px) rotate(1deg);
+    }
+    75% {
+        transform: translateY(-1px) rotate(1deg);
+    }
+    100% {
+        transform: translateY(1px) rotate(-1deg);
     }
 }
