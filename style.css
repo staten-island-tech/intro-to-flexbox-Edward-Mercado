@@ -128,6 +128,7 @@ h1 {
     width: 30%;
     height: 100%;
     margin: auto 0;
+    margin-top: 4px;
 }
 .market-item__purchase-button:hover {
     color: rgb(255, 255, 255);
