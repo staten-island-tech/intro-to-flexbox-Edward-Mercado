@@ -75,6 +75,7 @@ h1 {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
+  align-items: center;
 
   border: rgb(5, 37, 58) 7px solid;
   border-radius: 13px;
