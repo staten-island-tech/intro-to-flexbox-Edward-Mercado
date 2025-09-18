@@ -84,7 +84,7 @@ h1 {
 }
 
 .header-div {
-  height: 100px;
+  height: 10%;
   padding: auto;
   display: flex;
   align-items: center;
@@ -243,6 +243,29 @@ h1 {
 
 .checkout__button:active {
   animation: buy-items 0.2s ease;
+}
+
+@media screen and (max-width: 600px) {
+  .container, .filter_bar {
+    flex-direction: column;
+    padding: 10px;
+  } 
+
+  .market-item {
+    margin: 0;
+  }
+  .filter-bar__button {
+    width: 40%
+  };
+
+  .horizontal-line {
+    margin-top: 5%;
+  }
+
+  h1 {
+    font-size: 3em;
+    align-items: bottom;
+  }
 }
 
 @keyframes button-press {
