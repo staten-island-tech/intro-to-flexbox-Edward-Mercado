@@ -71,6 +71,7 @@ h1 {
   height: 375px;
   background-color: rgba(60, 150, 225, 0.07);
   margin: 2vw;
+  transition: all 0.299s;
 
   display: flex;
   flex-flow: column nowrap;
@@ -81,6 +82,9 @@ h1 {
   border-radius: 13px;
 
   box-shadow: 2px 2px 6px 1px rgba(156, 192, 207, 0.774);
+}
+.market-item:hover {
+  transform: scale(1.1);
 }
 
 .header-div {
@@ -153,6 +157,7 @@ h1 {
   height: 100%;
   margin: auto 0;
   margin-top: 4px;
+  transition: ease-in;
 }
 .market-item__purchase-button:hover {
   color: rgb(255, 255, 255);
@@ -308,7 +313,7 @@ h1 {
 
 @keyframes move-button {
   0% {
-    transform: translateY(1px) rotate(1deg);
+    transform: translateY(1px) rotate(1deg) scale(1.05);
   }
   25% {
     transform: translateY(-2px) rotate(-2deg);
