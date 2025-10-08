@@ -40,7 +40,6 @@ function getAmount(item, itemsPurchased) {
 }
 
 function getPrice(item, quantity) {
-    const price = parseFloat(item.price.replace("$", ""));
     return (price*quantity).toFixed(2);
 }
 
@@ -104,6 +103,7 @@ function updateCart() {
 
     let cost = getTotalCost(itemsPurchased);
 
+    console.log(item);
     itemsPurchased.forEach(item => {
         if (!items_placed.includes(item)) {
             injectCartItem(item);
@@ -118,7 +118,7 @@ function updateCart() {
         button.addEventListener("click", removeOne(button, itemsPurchased));
         console.log(button);
     })
-    console.log("---------------")
+    
     removeAllButtons.forEach(button => {
         button.addEventListener("click", removeAll(button, itemsPurchased));
         console.log(button);
@@ -175,121 +175,121 @@ function changeFilterButton(button) {
 const items = [
     {
         "title": "12 Pack Coke Zero",
-        "price": "$14.99",
+        "price": 14.99,
         "img_src": "coke-zero-pack.png",
         "filters": ["DRINKS"],
     },
     {
         "title": "12 Pack Cherry Coke Zero",
-        "price": "$16.99",
+        "price": 16.99,
         "img_src": "coke-zero-cherry-pack.png",
         "filters": ["DRINKS"],
     },
     {
         "title": "Boston Kreme Donut",
-        "price": "$1.79",
+        "price": 1.79,
         "img_src": "boston-kreme-donut.png",
         "filters": ["CHOCOLATE", "DESSERT"],
     },
     {
         "title": "Pastry Frank",
-        "price": "$4.69",
+        "price": 4.69,
         "img_src": "pastry-frank.png",
         "filters": ["SAVORY", "DESSERT"],
     },
     {
         "title": "10 Pack Pocky - Chocolate",
-        "price": "$24.99",
+        "price": 24.99,
         "img_src": "pocky.png",
         "filters": ["CHOCOLATE", "CANDY"],
     },
     {
         "title": "Oishi Salt and Vinegar Chips",
-        "price": "$1.49",
+        "price": 1.49,
         "img_src": "oishi-salt-and-vinegar.png",
         "filters": ["SAVORY"],
     },
     {
         "title": "12 Pack Kinder Bueno",
-        "price": "$11.99",
+        "price": 11.99,
         "img_src": "kinder-bueno.png",
         "filters": ["CHOCOLATE", "DESSERT"],
     },
     {
         "title": "30 Pack - Premier Protein Shake Chocolate",
-        "price": "$15.99",
+        "price": 15.99,
         "img_src": "premier-protein.png",
         "filters": ["DRINKS", "CHOCOLATE"],
     },
     {
         "title": "Snack Size Haribo Goldbears",
-        "price": "$1.99",
+        "price": 1.99,
         "img_src": "haribo-goldbear.png",
         "filters": ["CANDY"],
     },
     {
         "title": "Tuxedo Cake",
-        "price": "$18.99",
+        "price": 18.99,
         "img_src": "tuxedo-cake.png",
         "filters": ["DESSERT", "CHOCOLATE"],
     },
     {
         "title": "6 Pack Tate's Bake Shop Cookies",
-        "price": "$24.99",
+        "price": 24.99,
         "img_src": "tates-cookies.png",
         "filters": ["DESSERT"],
     },
     { 
         "title": "6 Pack Fruit by the Foot",
-        "price": "$3.69",
+        "price": 3.69,
         "img_src": "fruit-by-the-foot.png",
         "filters": ["CANDY"],
     },
     {
         "title": "Sausage Egg and Cheese Croissant",
-        "price": "$4.99",
+        "price": 4.99,
         "img_src": "sausage-egg-cheese-croissant.png",
         "filters": ["SAVORY"],
     },
     {
         "title": "Butter Croissant",
-        "price": "$2.79",
+        "price": 2.79,
         "img_src": "butter-croissant.png",
         "filters": ["SAVORY"],
     },
     {
         "title": "10 Pack Pocky - Strawberry",
-        "price": "$24.99",
+        "price": 24.99,
         "img_src": "pocky-strawberry.png",
         "filters": ["DESSERT"],
     },
     {
         "title": "Haribo Twin Snakes",
-        "price": "$3.99",
+        "price": 3.99,
         "img_src": "haribo-twin-snakes.webp",
         "filters": ["CANDY"],
     },
     {
         "title": "6 Pack Mallomars",
-        "price": "$4.49",
+        "price": 4.49,
         "img_src": "mallomars.png",
         "filters": ["CHOCOLATE", "DESSERT"],
     },
     {
         "title": "6 Pack Fruit Roll Ups",
-        "price": "$4.99",
+        "price": 4.99,
         "img_src": "fruit-roll-up.png",
         "filters": ["CANDY"],
     },
     {
         "title": "CARDSTOCK",
-        "price": "$0.09",
+        "price": 0.09,
         "img_src": "cardstock.png",
         "filters": [],
     },
     {
         "title": "Hershey's Cookies and Cream Bar",
-        "price": "$2.99",
+        "price": 2.99,
         "img_src": "hersheys-cnc.png",
         "filters": ["CHOCOLATE", "DESSERT", "CANDY"],
     },
