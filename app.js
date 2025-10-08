@@ -292,15 +292,28 @@ function updateCart() {
     for(i=0;i<itemsPurchased.length;i++) {
         if(!itemsAdded.includes(itemsPurchased[i])) {
             itemsAdded.push(itemsPurchased[i]);
+
             
+            let quantity = 0;
+            for(j=0;j<itemsPurchased.length;j++) {
+                if (itemsPurchased[i] === itemsPurchased[j]) {
+                    quantity++;
+                }
+            }
+            insertCartitem(itemsPurchased[i], quantity)
         }
     }
 }
 
 function insertCartItem(item, quantity) {
     const DOMSelectors = {
-        display: 
+        display: document.querySelector(".checkout")
     }
+    DOMSelectors.display.insertAdjacentHTML(
+        'afterbegin', `
+        asdf
+        `
+    )
 }
 
 filterButtons.forEach(button => {
