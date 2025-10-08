@@ -46,7 +46,9 @@ function getPrice(item, quantity) {
 
 function getTotalCost(itemsPurchased) {
     total_cost = 0;
-
+    itemsPurchased.forEach(item => {
+        total_cost += getPrice(item, 1)
+    })
 }
 
 function injectCartItem(item) {
@@ -88,11 +90,15 @@ function updateCart() {
         }
     })
 
+    const DOMSelectors = {
+        "display": document.querySelector(".checkout");
+    }
+
     DOMSelectors.display.insertAdjacentHTML(
         "afterbegin",
         `
         <h2 class="lexend-item-title"> Total Cost: $${ total_cost } </h2>
-        `)
+        `);
 }
 
 function applyFilter() {
