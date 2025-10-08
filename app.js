@@ -120,10 +120,9 @@ const items = [
         "filters": ["CHOCOLATE", "DESSERT"],
     },
 ]
-
 const filterButtons = document.querySelectorAll(".filter-bar__button");
-
 const filtersActive = []
+let filterMode = "ALL"; // ANY or ALL
 
 function inject_item(item) {
     const DOMSelectors = {
@@ -160,15 +159,25 @@ function applyFilter() {
         items.forEach(item => inject_item(item));
     }
     else {
-        filtersActive.forEach(filter => {
-            items.forEach(
-                item => {
-                    if (item.filters.includes(filter)) {
-                        inject_item(item);
+        if (filterMode === "ANY") {
+            filtersActive.forEach(filter => {
+                items.forEach(
+                    item => {
+                        if (item.filters.includes(filter)) {
+                            inject_item(item);
+                        }})})
+        }
+        else if (filterMode === "ALL") {
+            items.forEach(item => {
+                for (let i=0;i<filtersActive.length;i++) {
+                    if (!item.filters.includes(filtersActive[i])) {
+                        return
                     }
                 }
-            )
-        })
+                inject_item(item);
+            })
+        }
+        
     }
 } // nesting code is a passion
 
@@ -189,5 +198,18 @@ filterButtons.forEach(button => {
     }
 )}
 )
+
+const searchModeToggle = document.querySelector(".filter-bar__search-mode");
+
+searchModeToggle.addEventListener("click", function() {
+    if (filterMode === "ANY") {
+        filterMode = "ALL";
+        this.classList.add("active");
+    } else {
+        filterMode = "ANY";
+        this.classList.remove("active");
+    }
+    applyFilter();
+});
 
 console.log(filterButtons)

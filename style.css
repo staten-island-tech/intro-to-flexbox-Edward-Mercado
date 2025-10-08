@@ -178,6 +178,31 @@ h1 {
   padding: 20px auto;
 }
 
+.filter-bar__search-mode {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+
+  font-size: 2.5em;
+  width: 100%;
+  text-align: center;
+  padding: 5px auto;
+  margin: 4px;
+  border-radius: 5px;
+  color: rgb(67, 106, 133);
+}
+.filter-bar__search-mode:hover {
+  color: rgb(5, 37, 58);
+}
+.filter-bar__search-mode.active {
+  /* when i add javascript make this last */
+  animation: button-press 0.2s ease;
+  color: white;
+  background-color: rgb(5, 37, 58);
+  border-radius: 5px;
+}
+
 .filter-bar__button {
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
