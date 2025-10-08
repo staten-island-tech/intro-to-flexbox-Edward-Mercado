@@ -53,7 +53,6 @@ function getTotalCost(itemsPurchased) {
 }
 
 function removeOne(button, itemsPurchased) {
-    console.log('hi')
     for(i=0;i<itemsPurchased.length;i++) {
         item = itemsPurchased[i];
         if (items.indexOf(item) === button.id) {
@@ -76,6 +75,7 @@ function injectCartItem(item) {
     const DOMSelectors = {
         display: document.querySelector(".checkout")
     }
+
     DOMSelectors.display.insertAdjacentHTML(
     "afterbegin",
     `
@@ -90,20 +90,10 @@ function injectCartItem(item) {
       Total Price For These Items: $${getPrice(item, getAmount(item, itemsPurchased))}
     </h2>
     <div class="checkout__card-button-container"> 
-    <button class="checkout__card-remove-button" id =${ items.indexOf(item) }> Remove One </button>
-    <button class="checkout__card-remove-button-all" id =${ items.indexOf(item) }> Remove All </button>
+    <button class="remove-button" id =${ items.indexOf(item) }> Remove One </button>
+    <button class="remove-button-all" id =${ items.indexOf(item) }> Remove All </button>
     </div>
   </div>`)
-
-  let removeOneButtons = document.querySelectorAll(".checkout__card-remove-button");
-  let removeAllButtons = document.querySelectorAll(".checkout__card-remove-button-all");
-
-  removeOneButtons.forEach(button => {
-    button.addEventListener("click", removeOne(button, itemsPurchased));
-  })
-  removeAllButtons.forEach(button => {
-    button.addEventListener("click", removeAll(button, itemsPurchased));
-  })
 }
 
 function updateCart() {
@@ -119,6 +109,19 @@ function updateCart() {
             injectCartItem(item);
             items_placed.push(item);
         }
+    })
+
+    let removeOneButtons = document.querySelectorAll(".remove-button");
+    let removeAllButtons = document.querySelectorAll(".remove-button-all");
+
+    removeOneButtons.forEach(button => {
+        button.addEventListener("click", removeOne(button, itemsPurchased));
+        console.log(button);
+    })
+    console.log("---------------")
+    removeAllButtons.forEach(button => {
+        button.addEventListener("click", removeAll(button, itemsPurchased));
+        console.log(button);
     })
 
     const DOMSelectors = {
