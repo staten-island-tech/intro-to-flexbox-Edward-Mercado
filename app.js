@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 const itemsPurchased = [];
 function addToCart(button) {
     itemsPurchased.push(items[button.id]);
@@ -172,6 +174,10 @@ function changeFilterButton(button) {
       applyFilter();
 }
 
+=======
+>>>>>>> parent of ba7869c (ZCx)
+=======
+>>>>>>> parent of ba7869c (ZCx)
 const items = [
     {
         "title": "12 Pack Coke Zero",
@@ -201,7 +207,7 @@ const items = [
         "title": "10 Pack Pocky - Chocolate",
         "price": 24.99,
         "img_src": "pocky.png",
-        "filters": ["CHOCOLATE", "CANDY"],
+        "filters": ["CHOCOLATE"],
     },
     {
         "title": "Oishi Salt and Vinegar Chips",
@@ -213,7 +219,7 @@ const items = [
         "title": "12 Pack Kinder Bueno",
         "price": 11.99,
         "img_src": "kinder-bueno.png",
-        "filters": ["CHOCOLATE", "DESSERT"],
+        "filters": ["CHOCOLATE"],
     },
     {
         "title": "30 Pack - Premier Protein Shake Chocolate",
@@ -291,25 +297,84 @@ const items = [
         "title": "Hershey's Cookies and Cream Bar",
         "price": 2.99,
         "img_src": "hersheys-cnc.png",
-        "filters": ["CHOCOLATE", "DESSERT", "CANDY"],
+        "filters": ["CHOCOLATE", "DESSERT"],
     },
 ]
+const filterButtons = document.querySelectorAll(".filter-bar__button");
+const filtersActive = []
+let filterMode = "ALL"; // ANY or ALL
+
+function inject_item(item) {
+    const DOMSelectors = {
+        display: document.querySelector(".container")
+    }
+    DOMSelectors.display.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div class="market-item">
+        <h2 class="market-item__title">${item.title}</h2>
+        <div class="thin-horizontal-line"></div>
+        <img
+          src=${item.img_src}
+          alt=${item.title}
+          class="market-item__img"
+        />
+        <div class="thin-horizontal-line" id="market-item__bottom-line"></div>
+        <div class="market-item__purchase">
+          <p class="market-item__price-text"> ${item.price} </p>
+          <button class="market-item__purchase-button">ADD TO CART</button>
+        </div>
+    </div>
+    `
+    )
+} 
 items.forEach(item => inject_item(item));
 
-let filterMode = "ANY"; // ANY or ALL
-const filterButtons = document.querySelectorAll(".filter-bar__button");
-const filtersActive = [];
-const itemButtons = document.querySelectorAll(".market-item__purchase-button");
+function applyFilter() {
+    // use filtersActive to filter items
+    const marketItems = document.querySelectorAll(".market-item");
+    marketItems.forEach(item => item.remove());
+    filtersActive.sort();
+    if (filtersActive.length === 0) {
+        items.forEach(item => inject_item(item));
+    }
+    else {
+        if (filterMode === "ANY") {
+            filtersActive.forEach(filter => {
+                items.forEach(
+                    item => {
+                        if (item.filters.includes(filter)) {
+                            inject_item(item);
+                        }})})
+        }
+        else if (filterMode === "ALL") {
+            items.forEach(item => {
+                for (let i=0;i<filtersActive.length;i++) {
+                    if (!item.filters.includes(filtersActive[i])) {
+                        return
+                    }
+                }
+                inject_item(item);
+            })
+        }
+        
+    }
+} // nesting code is a passion
 
-itemButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        addToCart(button);
-    })
-})
+function changeFilterButton(button) {
+    if (button.classList.contains("active")) {
+        button.classList.remove("active");
+        filtersActive.splice(filtersActive.indexOf(button.textContent), 1);
+      } else {
+        button.classList.add("active");
+        filtersActive.push(button.textContent);
+      }
+      applyFilter();
+}
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
-        changeFilterButton(button);
+        changeFilterButton(button)
     }
 )}
 )
@@ -326,3 +391,5 @@ searchModeToggle.addEventListener("click", function() {
     }
     applyFilter();
 });
+
+console.log(filterButtons)

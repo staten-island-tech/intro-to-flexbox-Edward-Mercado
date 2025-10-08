@@ -229,6 +229,7 @@ h1 {
   border-radius: 5px;
 }
 
+
 .checkout {
   width: 94%;
   display: flex;
@@ -276,6 +277,8 @@ h1 {
   animation: buy-items 0.2s ease;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 .checkout__card {
   display: flex;
   flex-flow: column nowrap;
@@ -325,6 +328,10 @@ h1 {
   animation: button-press 0.25s ease;
 }
 
+=======
+>>>>>>> parent of ba7869c (ZCx)
+=======
+>>>>>>> parent of ba7869c (ZCx)
 @media screen and (max-width: 600px) {
   .container, .filter_bar {
     flex-direction: column;
