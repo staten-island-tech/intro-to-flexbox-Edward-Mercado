@@ -120,4 +120,11 @@ const items = [
         "price": "$0.09",
         "img_src": "cardstock.png",
     },
+    {
+        "title": "Hershey's Cookies and Cream Bar",
+        "price": "$2.99",
+        "img_src": "hersheys-cnc.png",
+    },
 ]
+
+console.log(items.length)
