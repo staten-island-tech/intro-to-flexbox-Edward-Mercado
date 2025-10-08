@@ -165,7 +165,7 @@ h1 {
   animation: move-button 0.2s ease infinite;
 }
 .market-item__purchase-button:active {
-  animation: button-press 0.2s ease;
+  animation: button-press 0.5s ease;
 }
 
 .filter-bar {
@@ -190,18 +190,20 @@ h1 {
   text-align: center;
   padding: 5px auto;
   margin: 4px;
+  border-radius: 5px;
   color: rgb(67, 106, 133);
 }
 .filter-bar__button:hover {
   color: rgb(5, 37, 58);
 }
-.filter-bar__button:active {
+.filter-bar__button.active {
   /* when i add javascript make this last */
   animation: button-press 0.2s ease;
   color: white;
   background-color: rgb(5, 37, 58);
   border-radius: 5px;
 }
+
 
 .checkout {
   width: 94%;
