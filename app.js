@@ -127,4 +127,4 @@ const items = [
     },
 ]
 
-console.log(items.length)
+console.log(items.length);
