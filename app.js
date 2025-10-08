@@ -49,6 +49,27 @@ function getTotalCost(itemsPurchased) {
     itemsPurchased.forEach(item => {
         total_cost += getPrice(item, 1)
     })
+    return total_cost
+}
+
+function removeOne(button, itemsPurchased) {
+    console.log('hi')
+    for(i=0;i<itemsPurchased.length;i++) {
+        item = itemsPurchased[i];
+        if (items.indexOf(item) === button.id) {
+            itemsPurchased.splice(i, 1);
+            return;
+        }
+    }
+}
+
+function removeAll(button, itemsPurchased) {
+    for(i=0;i<itemsPurchased.length;i++) {
+        item = itemsPurchased[i];
+        if (items.indexOf(item) === button.id) {
+            itemsPurchased.splice(i, 1);
+        }
+    }
 }
 
 function injectCartItem(item) {
@@ -69,10 +90,20 @@ function injectCartItem(item) {
       Total Price For These Items: $${getPrice(item, getAmount(item, itemsPurchased))}
     </h2>
     <div class="checkout__card-button-container"> 
-    <button class="checkout__card-remove-button"> Remove One </button>
-    <button class="checkout__card-remove-button-all"> Remove All </button>
+    <button class="checkout__card-remove-button" id =${ items.indexOf(item) }> Remove One </button>
+    <button class="checkout__card-remove-button-all" id =${ items.indexOf(item) }> Remove All </button>
     </div>
   </div>`)
+
+  let removeOneButtons = document.querySelectorAll(".checkout__card-remove-button");
+  let removeAllButtons = document.querySelectorAll(".checkout__card-remove-button-all");
+
+  removeOneButtons.forEach(button => {
+    button.addEventListener("click", removeOne(button, itemsPurchased));
+  })
+  removeAllButtons.forEach(button => {
+    button.addEventListener("click", removeAll(button, itemsPurchased));
+  })
 }
 
 function updateCart() {
@@ -81,7 +112,7 @@ function updateCart() {
     cartItems.forEach(item => item.remove());
     itemsPurchased.sort();
 
-    let total_cost = getTotalCost(itemsPurchased);
+    let cost = getTotalCost(itemsPurchased);
 
     itemsPurchased.forEach(item => {
         if (!items_placed.includes(item)) {
@@ -91,14 +122,9 @@ function updateCart() {
     })
 
     const DOMSelectors = {
-        "display": document.querySelector(".checkout");
+        "display": document.querySelector(".checkout"),
+        "total_cost": document.querySelector("#total_cost"),
     }
-
-    DOMSelectors.display.insertAdjacentHTML(
-        "afterbegin",
-        `
-        <h2 class="lexend-item-title"> Total Cost: $${ total_cost } </h2>
-        `);
 }
 
 function applyFilter() {
