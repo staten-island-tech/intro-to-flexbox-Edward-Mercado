@@ -335,6 +335,18 @@ h1 {
   animation: button-press 0.25s ease;
 }
 
+.receipt-notification {
+  font-family: "Lexend", sans-serif;
+  position: fixed;
+  top: 78%;
+  left: 78%;
+  width: 20%;
+  height: 20%;
+  background-color: white;
+  border: black 3px solid;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 600px) {
   .container, .filter_bar {
     flex-direction: column;
