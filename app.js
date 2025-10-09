@@ -307,12 +307,12 @@ function applySorting(button, sortingButtons) {
         items.sort((a, b) => a.price - b.price);
         applyFilter();
     }
-    else if (button.id === "alphabetical-a") {
-        items.sort((a, b) => a.title.localeCompare(b.title));
+    else if (button.id === "alphabet-a") {
+        items.sort((a, b) => b.title.localeCompare(a.title));
         applyFilter();
     }
-    else if (button.id === "alphabetical-z") {
-        items.sort((a, b) => b.title.localeCompare(a.title));
+    else if (button.id === "alphabet-z") {
+        items.sort((a, b) => a.title.localeCompare(b.title));
         applyFilter();
     }
 }
