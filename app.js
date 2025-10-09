@@ -1,135 +1,6 @@
 // bugs you gotta fix/things you gotta add bc you are a piece of shit programmer
 // buy all of your items when they are in the cart
 
-const items = [
-    {
-        "title": "12 Pack Coke Zero",
-        "price": 14.99,
-        "img_src": "images/coke-zero-pack.png",
-        "filters": ["DRINKS"],
-    },
-    {
-        "title": "12 Pack Cherry Coke Zero",
-        "price": 16.99,
-        "img_src": "images/coke-zero-cherry-pack.png",
-        "filters": ["DRINKS"],
-    },
-    {
-        "title": "Boston Kreme Donut",
-        "price": 1.79,
-        "img_src": "images/boston-kreme-donut.png",
-        "filters": ["CHOCOLATE", "DESSERT"],
-    },
-    {
-        "title": "Pastry Frank",
-        "price": 4.69,
-        "img_src": "images/pastry-frank.png",
-        "filters": ["SAVORY", "DESSERT"],
-    },
-    {
-        "title": "10 Pack Pocky - Chocolate",
-        "price": 24.99,
-        "img_src": "images/pocky.png",
-        "filters": ["CHOCOLATE"],
-    },
-    {
-        "title": "Oishi Salt and Vinegar Chips",
-        "price": 1.49,
-        "img_src": "images/oishi-salt-and-vinegar.png",
-        "filters": ["SAVORY"],
-    },
-    {
-        "title": "12 Pack Kinder Bueno",
-        "price": 11.99,
-        "img_src": "images/kinder-bueno.png",
-        "filters": ["CHOCOLATE"],
-    },
-    {
-        "title": "30 Pack - Premier Protein Shake Chocolate",
-        "price": 15.99,
-        "img_src": "images/premier-protein.png",
-        "filters": ["DRINKS", "CHOCOLATE"],
-    },
-    {
-        "title": "Snack Size Haribo Goldbears",
-        "price": 1.99,
-        "img_src": "images/haribo-goldbear.png",
-        "filters": ["CANDY"],
-    },
-    {
-        "title": "Tuxedo Cake",
-        "price": 18.99,
-        "img_src": "images/tuxedo-cake.png",
-        "filters": ["DESSERT", "CHOCOLATE"],
-    },
-    {
-        "title": "6 Pack Tate's Bake Shop Cookies",
-        "price": 24.99,
-        "img_src": "images/tates-cookies.png",
-        "filters": ["DESSERT"],
-    },
-    { 
-        "title": "6 Pack Fruit by the Foot",
-        "price": 3.69,
-        "img_src": "images/fruit-by-the-foot.png",
-        "filters": ["CANDY"],
-    },
-    {
-        "title": "Sausage Egg and Cheese Croissant",
-        "price": 4.99,
-        "img_src": "images/sausage-egg-cheese-croissant.png",
-        "filters": ["SAVORY"],
-    },
-    {
-        "title": "Butter Croissant",
-        "price": 2.79,
-        "img_src": "images/butter-croissant.png",
-        "filters": ["SAVORY"],
-    },
-    {
-        "title": "10 Pack Pocky - Strawberry",
-        "price": 24.99,
-        "img_src": "images/pocky-strawberry.png",
-        "filters": ["DESSERT"],
-    },
-    {
-        "title": "Haribo Twin Snakes",
-        "price": 3.99,
-        "img_src": "images/haribo-twin-snakes.webp",
-        "filters": ["CANDY"],
-    },
-    {
-        "title": "6 Pack Mallomars",
-        "price": 4.49,
-        "img_src": "images/mallomars.png",
-        "filters": ["CHOCOLATE", "DESSERT"],
-    },
-    {
-        "title": "6 Pack Fruit Roll Ups",
-        "price": 4.99,
-        "img_src": "images/fruit-roll-up.png",
-        "filters": ["CANDY"],
-    },
-    {
-        "title": "CARDSTOCK",
-        "price": 0.09,
-        "img_src": "images/cardstock.png",
-        "filters": [],
-    },
-    {
-        "title": "Hershey's Cookies and Cream Bar",
-        "price": 2.99,
-        "img_src": "images/hersheys-cnc.png",
-        "filters": ["CHOCOLATE", "DESSERT"],
-    },
-]
-const filterButtons = document.querySelectorAll(".filter-bar__button");
-const filtersActive = []
-let filterMode = "ANY"; // ANY or ALL
-
-const itemsPurchased = [];
-const checkoutButton = document.querySelector(".checkout__button");
-
 function getFlavorText(itemsPurchased) {
     if (itemsPurchased.length === 1) {
         return `Your purchase of ${ itemsPurchased[0].title } was successful.`
@@ -175,10 +46,6 @@ function buyItems() {
         removeReceiptWindow();
     })
 }
-
-checkoutButton.addEventListener("click", () => {
-    buyItems(itemsPurchased);
-})
 
 function inject_item(item) {
     const DOMSelectors = {
@@ -300,7 +167,6 @@ function inject_item(item) {
     `
     )
 } 
-items.forEach(item => inject_item(item));
 
 function applyFilter() {
     // use filtersActive to filter items
@@ -451,6 +317,39 @@ function applySorting(button, sortingButtons) {
     }
 }
 
+const searchModeToggle = document.querySelector(".filter-bar__search-mode");
+const itemButtons = document.querySelectorAll(".market-item__purchase-button");
+const sortingOptions = document.querySelectorAll(".sorting__button");
+
+const items = [ // i dont like how much space it was taking up
+    {"title": "12 Pack Coke Zero", "price": 14.99, "img_src": "images/coke-zero-pack.png", "filters": ["DRINKS"],},
+    { "title": "12 Pack Cherry Coke Zero", "price": 16.99, "img_src": "images/coke-zero-cherry-pack.png", "filters": ["DRINKS"],},
+    {"title": "Boston Kreme Donut", "price": 1.79, "img_src": "images/boston-kreme-donut.png", "filters": ["CHOCOLATE", "DESSERT"],},
+    {"title": "Pastry Frank", "price": 4.69, "img_src": "images/pastry-frank.png", "filters": ["SAVORY", "DESSERT"],},
+    {"title": "10 Pack Pocky - Chocolate", "price": 24.99, "img_src": "images/pocky.png", "filters": ["CHOCOLATE"],},
+    {"title": "Oishi Salt and Vinegar Chips", "price": 1.49, "img_src": "images/oishi-salt-and-vinegar.png","filters": ["SAVORY"],},
+    {"title": "12 Pack Kinder Bueno", "price": 11.99, "img_src": "images/kinder-bueno.png", "filters": ["CHOCOLATE"],},
+    {"title": "30 Pack - Premier Protein Shake Chocolate", "price": 15.99, "img_src": "images/premier-protein.png", "filters": ["DRINKS", "CHOCOLATE"],},
+    {"title": "Snack Size Haribo Goldbears", "price": 1.99, "img_src": "images/haribo-goldbear.png", "filters": ["CANDY"],},
+    {"title": "Tuxedo Cake", "price": 18.99, "img_src": "images/tuxedo-cake.png", "filters": ["DESSERT", "CHOCOLATE"],},
+    {"title": "6 Pack Tate's Bake Shop Cookies", "price": 24.99, "img_src": "images/tates-cookies.png", "filters": ["DESSERT"],},
+    { "title": "6 Pack Fruit by the Foot", "price": 3.69, "img_src": "images/fruit-by-the-foot.png", "filters": ["CANDY"],},
+    {"title": "Sausage Egg and Cheese Croissant", "price": 4.99, "img_src": "images/sausage-egg-cheese-croissant.png", "filters": ["SAVORY"],},
+    {"title": "Butter Croissant", "price": 2.79, "img_src": "images/butter-croissant.png", "filters": ["SAVORY"],},
+    {"title": "10 Pack Pocky - Strawberry", "price": 24.99, "img_src": "images/pocky-strawberry.png", "filters": ["DESSERT"],},
+    {"title": "Haribo Twin Snakes", "price": 3.99, "img_src": "images/haribo-twin-snakes.webp", "filters": ["CANDY"],},
+    {"title": "6 Pack Mallomars", "price": 4.49, "img_src": "images/mallomars.png", "filters": ["CHOCOLATE", "DESSERT"],},
+    {"title": "6 Pack Fruit Roll Ups", "price": 4.99, "img_src": "images/fruit-roll-up.png", "filters": ["CANDY"],},
+    {"title": "CARDSTOCK",  "price": 0.09, "img_src": "images/cardstock.png", "filters": [],},
+    { "title": "Hershey's Cookies and Cream Bar", "price": 2.99, "img_src": "images/hersheys-cnc.png", "filters": ["CHOCOLATE", "DESSERT"],},
+]
+const filterButtons = document.querySelectorAll(".filter-bar__button");
+const filtersActive = []
+let filterMode = "ANY"; // ANY or ALL
+
+const itemsPurchased = [];
+const checkoutButton = document.querySelector(".checkout__button");
+
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
         changeFilterButton(button);
@@ -458,9 +357,7 @@ filterButtons.forEach(button => {
 )}
 )
 
-const searchModeToggle = document.querySelector(".filter-bar__search-mode");
-const itemButtons = document.querySelectorAll(".market-item__purchase-button");
-const sortingOptions = document.querySelectorAll(".sorting__button");
+items.forEach(item => inject_item(item));
 
 sortingOptions.forEach(button => {
     button.addEventListener("click", () => {applySorting(button, sortingOptions)})
@@ -468,6 +365,10 @@ sortingOptions.forEach(button => {
 
 itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)})
+})
+
+checkoutButton.addEventListener("click", () => {
+    buyItems(itemsPurchased);
 })
 
 searchModeToggle.addEventListener("click", function() {
