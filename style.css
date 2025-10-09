@@ -21,6 +21,52 @@ body {
   font-style: normal;
 }
 
+.the-text {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: 2em;
+  color: rgb(67, 106, 133);
+}
+
+.sorting {
+  margin: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.sorting__title {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2em;
+  color: rgb(67, 106, 133);
+  width: 19%;
+}
+.sorting__button {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2em;
+  color: rgb(67, 106, 133);
+  width: 19%;
+  text-align: center;
+  align-items: center;
+  padding: auto;
+}
+.sorting__button:hover {
+  color: rgb(5, 37, 58);
+}
+.sorting__button.active {
+  animation: button-press 0.5s ease;
+  color: white;
+  background-color: rgb(5, 37, 58);
+  border-radius: 5px;
+}
+
 .lexend-item-title {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
@@ -353,7 +399,7 @@ h1 {
 
 .receipt-notification__text {
   color: rgb(124, 191, 202);
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   font-size: 12px;
 }
 

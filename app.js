@@ -415,7 +415,7 @@ function insertCartItem(item, quantity) {
         
         <div class="checkout__card">
           <h2 class="checkout__card-text"> $${ item.price } - ${ item.title } </h2>
-          <h2 class="checkout__card-text"> $${ getPriceForThese(item, quantity) } </h2>
+          <h2 class="checkout__card-text"> $${ getPriceForThese(item, quantity) } (${ quantity } in cart)  </h2>
           <div class="checkout__card-button-container">
             <button class="remove-button" id= ${items.indexOf(item)} > REMOVE ONE </button>
             <button class="remove-button-all" id= ${items.indexOf(item)}> REMOVE ALL </button>
@@ -425,15 +425,46 @@ function insertCartItem(item, quantity) {
     )
 }
 
+function applySorting(button, sortingButtons) {
+    sortingButtons.forEach(btn => {
+        if(btn.classList.contains("active")) {
+            btn.classList.remove("active");
+        }
+    })
+    button.classList.add("active");
+    
+    if (button.id ==="price-low") {
+        items.sort((a, b) => b.price - a.price);
+        applyFilter();
+    }
+    else if (button.id === "price-high") {
+        items.sort((a, b) => a.price - b.price);
+        applyFilter();
+    }
+    else if (button.id === "alphabetical-a") {
+        items.sort((a, b) => a.title.localeCompare(b.title));
+        applyFilter();
+    }
+    else if (button.id === "alphabetical-z") {
+        items.sort((a, b) => b.title.localeCompare(a.title));
+        applyFilter();
+    }
+}
+
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
-        changeFilterButton(button)
+        changeFilterButton(button);
     }
 )}
 )
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
 const itemButtons = document.querySelectorAll(".market-item__purchase-button");
+const sortingOptions = document.querySelectorAll(".sorting__button");
+
+sortingOptions.forEach(button => {
+    button.addEventListener("click", () => {applySorting(button, sortingOptions)})
+})
 
 itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)})
