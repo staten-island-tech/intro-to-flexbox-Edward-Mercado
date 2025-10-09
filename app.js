@@ -164,7 +164,7 @@ function buyItems() {
             <h2 class="receipt-notification__text">
                 ${ receipt_flavor_text }
             </h2>
-            <h2 class="receipt-notification__text">
+            <h2 class="receipt-notification__cost">
                 Total Spent: $${ total_cost }
             </h2>
         </div>
@@ -275,7 +275,6 @@ function changeFilterButton(button) {
       }
       applyFilter();
 }
-
 
 function inject_item(item) {
     const DOMSelectors = {
