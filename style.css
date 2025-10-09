@@ -337,13 +337,17 @@ h1 {
 
 .receipt-notification {
   font-family: "Lexend", sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px;
+  justify-content: center;
   position: fixed;
   top: 78%;
   left: 78%;
   width: 20%;
   height: 20%;
   background-color: white;
-  border: black 3px solid;
+  border: rgb(162, 162, 162) 3px solid;
   border-radius: 10px;
 }
 

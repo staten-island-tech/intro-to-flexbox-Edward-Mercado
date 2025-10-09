@@ -179,6 +179,11 @@ function removeAll(button_id, itemsPurchased) {
     return;
 }
 
+function removeReceiptWindow() {
+    const receipt = document.querySelector(".receipt-notification")
+    receipt.remove();
+}
+
 function applyFilter() {
     // use filtersActive to filter items
     const marketItems = document.querySelectorAll(".market-item");
@@ -277,7 +282,6 @@ function applyFilter() {
     }
 
     let buttons = document.querySelectorAll(".market-item__purchase-button");
-    console.log(buttons);
     buttons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)});
 })
@@ -380,7 +384,6 @@ filterButtons.forEach(button => {
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
 const itemButtons = document.querySelectorAll(".market-item__purchase-button");
-
 
 itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)})
