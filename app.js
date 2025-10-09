@@ -1,8 +1,5 @@
 // bugs you gotta fix/things you gotta add bc you are a piece of shit programmer
-// buying items doesnt work when filtering
 // buy all of your items when they are in the cart
-// 10/09 edward you better fix this shit or else im gonna beat you
-// i was out or working from 6am-11pm so dont complain
 
 const items = [
     {
@@ -209,15 +206,6 @@ function applyFilter() {
                 inject_item(item);
             })
         }
-
-        let buttons = document.querySelectorAll(".market-item__purchase-button");
-        console.log(buttons);
-        buttons.forEach(button => {
-            button.addEventListener("click", () => {
-                addToCart(button);
-            })
-        })
-        
     }
 } // nesting code is a passion
 
@@ -286,8 +274,13 @@ function applyFilter() {
                 inject_item(item);
             })
         }
-        
     }
+
+    let buttons = document.querySelectorAll(".market-item__purchase-button");
+    console.log(buttons);
+    buttons.forEach(button => {
+    button.addEventListener("click", () => {addToCart(button)});
+})
 } // nesting code is a passion
 
 function changeFilterButton(button) {
