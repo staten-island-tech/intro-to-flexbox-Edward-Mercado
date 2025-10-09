@@ -128,6 +128,57 @@ const filtersActive = []
 let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
+const checkoutButton = document.querySelector(".checkout__button");
+
+function getFlavorText(itemsPurchased) {
+    if (itemsPurchased.length === 1) {
+        return `Your purchase of ${ itemsPurchased[0].title } was successful.`
+    }
+    else if (itemsPurchased.length === 2) {
+        return `Your purchase of ${ itemsPurchased[0].title } and 1 more item was successful.`
+    }
+    else {
+        return `Your purchase of ${ itemsPurchased[0].title } and ${ itemsPurchased.length - 1} more items was successful.`
+    }
+}
+
+function buyItems() {
+    if (itemsPurchased.length === 0) {
+        return
+    }
+    let total_cost = getTotalCost(itemsPurchased);
+    let receipt_flavor_text = getFlavorText(itemsPurchased);
+    itemsPurchased.length = 0;
+    updateCart();
+
+    let display = document.querySelector("body");
+    let receipt_notification = document.querySelector(".receipt-notification");
+    if (receipt_notification) {
+        receipt_notification.remove();
+    }
+    display.insertAdjacentHTML("afterbegin", `
+        <div class="receipt-notification">
+        <div class="receipt-notification__img-container">
+            <img src="images/x.png" class="receipt-notification__x"/>
+        <div>
+            <h2 class="receipt-notification__text">
+                ${ receipt_flavor_text }
+            </h2>
+            <h2 class="receipt-notification__text">
+                Total Spent: $${ total_cost }
+            </h2>
+        </div>
+        `)
+
+    const xButton = document.querySelector(".receipt-notification__x");
+    xButton.addEventListener("click", () => {
+        removeReceiptWindow();
+    })
+}
+
+checkoutButton.addEventListener("click", () => {
+    buyItems(itemsPurchased);
+})
 
 function inject_item(item) {
     const DOMSelectors = {

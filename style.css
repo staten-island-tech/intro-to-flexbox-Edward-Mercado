@@ -340,7 +340,7 @@ h1 {
   display: flex;
   flex-flow: column nowrap;
   padding: 10px;
-  justify-content: center;
+  padding-top: 5%;
   position: fixed;
   top: 78%;
   left: 78%;
@@ -349,6 +349,21 @@ h1 {
   background-color: white;
   border: rgb(162, 162, 162) 3px solid;
   border-radius: 10px;
+}
+
+.receipt-notification__text {
+  color: rgb(124, 191, 202);
+  margin-bottom: 10%
+}
+
+.receipt-notification__x {
+  position: absolute;
+  width: 10%;
+  top: 5%;
+}
+.receipt-notification__x:hover {
+  transform: scale(1.7);
+  transition: all .08s ease-in;
 }
 
 @media screen and (max-width: 600px) {
