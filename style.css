@@ -250,6 +250,15 @@ h1 {
   margin-left: 1%;
 }
 
+.checkout__total-text {
+  margin: .5%;
+  margin-left: 1%;
+  margin-right: 0;
+  font-size: 3em;
+  color: rgb(0, 0, 0);
+  font-family: "Outfit", sans-serif;
+}
+
 .checkout__button {
   font-family: "Google Sans Code", monospace;
   font-optical-sizing: auto;
@@ -295,7 +304,8 @@ h1 {
 
 .checkout__card-button-container {
   display: flex;
-  flex-flow: row;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
 
 .remove-button, .remove-button-all {
@@ -311,7 +321,7 @@ h1 {
   background-color: rgb(113, 183, 204);
   border: none;
   border-radius: 6px;
-  width: 100%;
+  width: 49%;
   height: 100%;
   margin: auto 0;
   margin-top: 4px;

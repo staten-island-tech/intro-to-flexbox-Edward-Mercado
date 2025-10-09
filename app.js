@@ -1,3 +1,8 @@
+// bugs you gotta fix/things you gotta add bc you are a piece of shit programmer
+// buying items doesnt work when filtering
+// buy all of your items when they are in the cart
+// 10/09 edward you better fix this shit or else im gonna beat you
+// i was out or working from 6am-11pm so dont complain
 
 const items = [
     {
@@ -149,26 +154,32 @@ function inject_item(item) {
         </div>
     </div>
     `
-    )
+    );
 } 
 
-function removeOne(button, itemsPurchased) {
+function removeOne(button_id, itemsPurchased) {
     for(i=0;i<itemsPurchased.length;i++) {
-        item = itemsPurchased[i];
-        if (items.indexOf(item) === button.id) {
+        let item = itemsPurchased[i];
+        let item_id = items.indexOf(item).toString();
+        if (item_id === button_id) {
             itemsPurchased.splice(i, 1);
+            updateCart();
             return;
         }
     }
 }
 
-function removeAll(button, itemsPurchased) {
+function removeAll(button_id, itemsPurchased) {
+    let target_item = items[button_id];
+
     for(i=0;i<itemsPurchased.length;i++) {
-        item = itemsPurchased[i];
-        if (items.indexOf(item) === button.id) {
+        if (itemsPurchased[i] === target_item) {
             itemsPurchased.splice(i, 1);
+            i-=1;
         }
     }
+    updateCart();
+    return;
 }
 
 function applyFilter() {
@@ -282,36 +293,79 @@ function changeFilterButton(button) {
       applyFilter();
 }
 
+function getTotalCost(itemsPurchased) {
+    total_price = 0;
+    itemsPurchased.forEach(item => total_price += item.price);
+    return total_price.toFixed(2);
+}
+
 function addToCart(button) {
     itemsPurchased.push(items[button.id]);
     updateCart();
 }
 
 function updateCart() {
-    itemsAdded = []
+    itemsAdded = [];
+    
+    let cartItems = document.querySelectorAll(".checkout__card");
+    cartItems.forEach(item => item.remove());
+
     for(i=0;i<itemsPurchased.length;i++) {
         if(!itemsAdded.includes(itemsPurchased[i])) {
             itemsAdded.push(itemsPurchased[i]);
 
-            
             let quantity = 0;
             for(j=0;j<itemsPurchased.length;j++) {
                 if (itemsPurchased[i] === itemsPurchased[j]) {
                     quantity++;
                 }
             }
-            insertCartitem(itemsPurchased[i], quantity)
+            insertCartItem(itemsPurchased[i], quantity);
         }
     }
+
+    const removeOneButtons = document.querySelectorAll(".remove-button");
+    const removeAllButtons = document.querySelectorAll(".remove-button-all");
+    
+    removeOneButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            removeOne(button.id, itemsPurchased);
+        })
+    })
+
+    removeAllButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            removeAll(button.id, itemsPurchased);
+        })
+    })
+
+    let total_cost = getTotalCost(itemsPurchased);
+    let total_text = document.querySelector(".checkout__total-text");
+
+    if (total_text) {
+        total_text.textContent = `TOTAL COST: $${ total_cost }`;
+    }
+}
+
+function getPriceForThese(item, quantity) {
+    return (item.price*quantity).toFixed(2);
 }
 
 function insertCartItem(item, quantity) {
     const DOMSelectors = {
-        display: document.querySelector(".checkout")
+        display: document.querySelector(".checkout__card-holder")
     }
     DOMSelectors.display.insertAdjacentHTML(
-        'afterbegin', `
-        asdf
+        'beforeend', `
+        
+        <div class="checkout__card">
+          <h2 class="checkout__card-text"> $${ item.price } - ${ item.title } </h2>
+          <h2 class="checkout__card-text"> $${ getPriceForThese(item, quantity) } </h2>
+          <div class="checkout__card-button-container">
+            <button class="remove-button" id= ${items.indexOf(item)} > REMOVE ONE </button>
+            <button class="remove-button-all" id= ${items.indexOf(item)}> REMOVE ALL </button>
+          </div>
+        </div>
         `
     )
 }
@@ -330,7 +384,6 @@ const itemButtons = document.querySelectorAll(".market-item__purchase-button");
 itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)})
 })
-
 
 searchModeToggle.addEventListener("click", function() {
     if (filterMode === "ANY") {
