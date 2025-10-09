@@ -5,7 +5,7 @@ const items = [
     {
         "title": "12 Pack Coke Zero",
         "price": 14.99,
-        "img_src": "coke-zero-pack.png",
+        "img_src": "images/coke-zero-pack.png",
         "filters": ["DRINKS"],
     },
     {
