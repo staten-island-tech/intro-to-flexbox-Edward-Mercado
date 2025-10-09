@@ -209,6 +209,14 @@ function applyFilter() {
                 inject_item(item);
             })
         }
+
+        let buttons = document.querySelectorAll(".market-item__purchase-button");
+        console.log(buttons);
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                addToCart(button);
+            })
+        })
         
     }
 } // nesting code is a passion
