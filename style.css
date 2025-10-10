@@ -381,6 +381,39 @@ h1 {
   animation: button-press 0.25s ease;
 }
 
+.checkout__clear {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.4em;
+  background-color: rgb(90, 148, 165);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border-width: 0px;
+
+  margin: 1% auto;
+  width: 90%
+}
+
+.checkout__clear:hover {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.4em;
+  background-color: rgb(44, 106, 124);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.checkout__clear:active {
+  animation: button-press 0.2s ease;
+  color: white;
+  background-color: rgb(5, 37, 58);
+  border-radius: 5px;
+}
+
 .receipt-notification {
   font-family: "Lexend", sans-serif;
   display: flex;

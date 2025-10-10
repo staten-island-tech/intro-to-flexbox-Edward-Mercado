@@ -348,6 +348,7 @@ const filtersActive = []
 let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
+const clearButton = document.querySelector(".checkout__clear")
 const checkoutButton = document.querySelector(".checkout__button");
 
 filterButtons.forEach(button => {
@@ -358,17 +359,22 @@ filterButtons.forEach(button => {
 )
 
 items.forEach(item => inject_item(item));
+itemButtons.forEach(button => {
+    button.addEventListener("click", () => {addToCart(button)})
+})
 
 sortingOptions.forEach(button => {
     button.addEventListener("click", () => {applySorting(button, sortingOptions)})
 })
 
-itemButtons.forEach(button => {
-    button.addEventListener("click", () => {addToCart(button)})
-})
 
 checkoutButton.addEventListener("click", () => {
     buyItems(itemsPurchased);
+})
+
+clearButton.addEventListener("click", () => {
+    itemsPurchased.length = 0;
+    updateCart();
 })
 
 searchModeToggle.addEventListener("click", function() {
@@ -381,3 +387,6 @@ searchModeToggle.addEventListener("click", function() {
     }
     applyFilter();
 });
+
+applyFilter(); // i dunno there's a bug where buttons don't add to cart until you put a filter
+// so i just have that here now (it doens't do anything except putting a filter that already exists)
