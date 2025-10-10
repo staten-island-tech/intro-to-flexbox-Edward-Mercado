@@ -55,7 +55,6 @@ body {
   width: 19%;
   text-align: center;
   align-items: center;
-  padding: auto;
 }
 .sorting__button:hover {
   color: rgb(5, 37, 58);
