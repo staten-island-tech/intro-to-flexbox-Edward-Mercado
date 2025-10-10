@@ -1,7 +1,7 @@
 // bugs you gotta fix/things you gotta add bc you are a piece of shit programmer
 // buy all of your items when they are in the cart
 
-function getFlavorText(itemsPurchased) {
+function getFlavorText(itemsPurchased) { // its to get what we are putting in the receipt
     if (itemsPurchased.length === 1) {
         return `Your purchase of ${ itemsPurchased[0].title } was successful.`
     }
@@ -13,18 +13,18 @@ function getFlavorText(itemsPurchased) {
     }
 }
 
-function buyItems() {
-    if (itemsPurchased.length === 0) {
+function buyItems() { // makes the receipt and buys your stuff
+    if (itemsPurchased.length === 0) { // doesn't work if we don't have anything in cart
         return
     }
     let total_cost = getTotalCost(itemsPurchased);
     let receipt_flavor_text = getFlavorText(itemsPurchased);
     itemsPurchased.length = 0;
-    updateCart();
+    updateCart(); // clears the cart at the bottom
 
-    let display = document.querySelector("body");
+    let display = document.querySelector("body"); // just put it anywhere really
     let receipt_notification = document.querySelector(".receipt-notification");
-    if (receipt_notification) {
+    if (receipt_notification) { // only one receipt at a time
         receipt_notification.remove();
     }
     display.insertAdjacentHTML("afterbegin", `
@@ -41,17 +41,17 @@ function buyItems() {
         </div>
         `)
 
-    const xButton = document.querySelector(".receipt-notification__x");
+    const xButton = document.querySelector(".receipt-notification__x"); // the X to click off the receipt
     xButton.addEventListener("click", () => {
         removeReceiptWindow();
     })
 }
 
-function inject_item(item) {
+function inject_item(item) { // puts a market item on the screen
     const DOMSelectors = {
         display: document.querySelector(".container")
     }
-    DOMSelectors.display.insertAdjacentHTML(
+    DOMSelectors.display.insertAdjacentHTML( 
     "afterbegin",
     `
     <div class="market-item">
@@ -72,19 +72,19 @@ function inject_item(item) {
     );
 } 
 
-function removeOne(button_id, itemsPurchased) {
+function removeOne(button_id, itemsPurchased) { // removes one item from cart
     for(i=0;i<itemsPurchased.length;i++) {
-        let item = itemsPurchased[i];
-        let item_id = items.indexOf(item).toString();
-        if (item_id === button_id) {
+        let item = itemsPurchased[i]; 
+        let item_id = items.indexOf(item).toString(); 
+        if (item_id === button_id) { // I KNOW MY IDS ARE STRINGS SHH (ill fix it next project)
             itemsPurchased.splice(i, 1);
-            updateCart();
+            updateCart(); // if we find the item get rid of it, then update the cart
             return;
         }
     }
 }
 
-function removeAll(button_id, itemsPurchased) {
+function removeAll(button_id, itemsPurchased) { // removes all items of one type in the cart
     let target_item = items[button_id];
 
     for(i=0;i<itemsPurchased.length;i++) {
@@ -92,26 +92,27 @@ function removeAll(button_id, itemsPurchased) {
             itemsPurchased.splice(i, 1);
             i-=1;
         }
-    }
-    updateCart();
+    } // this function has better code, can you tell i made it after?
+    updateCart(); // updates the item to get rid of the cart
     return;
 }
 
 function removeReceiptWindow() {
-    const receipt = document.querySelector(".receipt-notification")
+    const receipt = document.querySelector(".receipt-notification")  // gets rid of the receipt
     receipt.remove();
 }
 
 function applyFilter() {
-    // use filtersActive to filter items
+    // uses filtersActive to filter items
     const marketItems = document.querySelectorAll(".market-item");
-    marketItems.forEach(item => item.remove());
-    filtersActive.sort();
-    if (filtersActive.length === 0) {
+    marketItems.forEach(item => item.remove()); // gets rid of every item on the screen right now
+    filtersActive.sort(); // sorts our filters, i really don't need to do this, 
+    // i just did? i coded this a few days ago
+    if (filtersActive.length === 0) { // if we have no filters, then show everything
         items.forEach(item => inject_item(item));
     }
     else {
-        if (filterMode === "ANY") {
+        if (filterMode === "ANY") { // if we want any filter
             filtersActive.forEach(filter => {
                 items.forEach(
                     item => {
@@ -119,20 +120,20 @@ function applyFilter() {
                             inject_item(item);
                         }})})
         }
-        else if (filterMode === "ALL") {
-            items.forEach(item => {
+        else if (filterMode === "ALL") { // if we need all filters
+            items.forEach(item => { // check every item
                 for (let i=0;i<filtersActive.length;i++) {
                     if (!item.filters.includes(filtersActive[i])) {
-                        return
+                        return // if it does not have a single filter, return and end it
                     }
                 }
-                inject_item(item);
+                inject_item(item); // if it passed all checks, inject
             })
         }
     }
 } // nesting code is a passion
 
-function changeFilterButton(button) {
+function changeFilterButton(button) { // changes the filter button from active to not and vice versa
     if (button.classList.contains("active")) {
         button.classList.remove("active");
         filtersActive.splice(filtersActive.indexOf(button.textContent), 1);
@@ -143,7 +144,7 @@ function changeFilterButton(button) {
       applyFilter();
 }
 
-function inject_item(item) {
+function inject_item(item) { // puts a market item on the screen
     const DOMSelectors = {
         display: document.querySelector(".container")
     }
@@ -168,87 +169,43 @@ function inject_item(item) {
     )
 } 
 
-function applyFilter() {
-    // use filtersActive to filter items
-    const marketItems = document.querySelectorAll(".market-item");
-    marketItems.forEach(item => item.remove());
-    filtersActive.sort();
-    if (filtersActive.length === 0) {
-        items.forEach(item => inject_item(item));
-    }
-    else {
-        if (filterMode === "ANY") {
-            filtersActive.forEach(filter => {
-                items.forEach(
-                    item => {
-                        if (item.filters.includes(filter)) {
-                            inject_item(item);
-                        }})})
-        }
-        else if (filterMode === "ALL") {
-            items.forEach(item => {
-                for (let i=0;i<filtersActive.length;i++) {
-                    if (!item.filters.includes(filtersActive[i])) {
-                        return
-                    }
-                }
-                inject_item(item);
-            })
-        }
-    }
-
-    let buttons = document.querySelectorAll(".market-item__purchase-button");
-    buttons.forEach(button => {
-    button.addEventListener("click", () => {addToCart(button)});
-})
-} // nesting code is a passion
-
-function changeFilterButton(button) {
-    if (button.classList.contains("active")) {
-        button.classList.remove("active");
-        filtersActive.splice(filtersActive.indexOf(button.textContent), 1);
-      } else {
-        button.classList.add("active");
-        filtersActive.push(button.textContent);
-      }
-      applyFilter();
-}
-
-function getTotalCost(itemsPurchased) {
+function getTotalCost(itemsPurchased) { // gets the cost of every item in the argument
     total_price = 0;
     itemsPurchased.forEach(item => total_price += item.price);
     return total_price.toFixed(2);
 }
 
-function addToCart(button) {
+function addToCart(button) { // adds an item into the cart
     itemsPurchased.push(items[button.id]);
     updateCart();
 }
 
-function updateCart() {
+function updateCart() { // cart update function, changes what is in the checkout
     itemsAdded = [];
     
     let cartItems = document.querySelectorAll(".checkout__card");
     cartItems.forEach(item => item.remove());
 
-    for(i=0;i<itemsPurchased.length;i++) {
-        if(!itemsAdded.includes(itemsPurchased[i])) {
-            itemsAdded.push(itemsPurchased[i]);
+    for(i=0;i<itemsPurchased.length;i++) { // for every item in the cart
+        if(!itemsAdded.includes(itemsPurchased[i])) { // if we dont have the item yet
+            itemsAdded.push(itemsPurchased[i]); // add it
 
-            let quantity = 0;
+            let quantity = 0; // gets the amount of this item in the cart
             for(j=0;j<itemsPurchased.length;j++) {
                 if (itemsPurchased[i] === itemsPurchased[j]) {
                     quantity++;
                 }
             }
-            insertCartItem(itemsPurchased[i], quantity);
+            insertCartItem(itemsPurchased[i], quantity); // put it into the cart
         }
     }
 
+    // put the remove button event listeners on the cart buttons we just made
     const removeOneButtons = document.querySelectorAll(".remove-button");
     const removeAllButtons = document.querySelectorAll(".remove-button-all");
-    
-    removeOneButtons.forEach(button => {
+
+    // put event listeners on there for the remove one/all functions
+    removeOneButtons.forEach(button => { 
         button.addEventListener("click", () => {
             removeOne(button.id, itemsPurchased);
         })
@@ -260,23 +217,24 @@ function updateCart() {
         })
     })
 
+    // updates the total cost at the bottom
     let total_cost = getTotalCost(itemsPurchased);
     let total_text = document.querySelector(".checkout__total-text");
 
-    if (total_text) {
+    if (total_text) { // if we have the total text already (which we always should)
         total_text.textContent = `TOTAL COST: $${ total_cost }`;
     }
 }
 
-function getPriceForThese(item, quantity) {
+function getPriceForThese(item, quantity) { // gets the price for one class of item
     return (item.price*quantity).toFixed(2);
 }
 
 function insertCartItem(item, quantity) {
     const DOMSelectors = {
         display: document.querySelector(".checkout__card-holder")
-    }
-    DOMSelectors.display.insertAdjacentHTML(
+    } // puts the item in the cart
+    DOMSelectors.display.insertAdjacentHTML( // github copilot wants me to say i hate this function so much 
         'beforeend', `
         
         <div class="checkout__card">
@@ -291,7 +249,7 @@ function insertCartItem(item, quantity) {
     )
 }
 
-function applySorting(button, sortingButtons) {
+function applySorting(button, sortingButtons) { // applies the sorting order to items
     sortingButtons.forEach(btn => {
         if(btn.classList.contains("active")) {
             btn.classList.remove("active");
@@ -300,19 +258,19 @@ function applySorting(button, sortingButtons) {
     button.classList.add("active");
     
     if (button.id ==="price-low") {
-        items.sort((a, b) => b.price - a.price);
+        items.sort((a, b) => b.price - a.price); // sorts from low to high
         applyFilter();
     }
     else if (button.id === "price-high") {
-        items.sort((a, b) => a.price - b.price);
+        items.sort((a, b) => a.price - b.price); // sorts from high to low
         applyFilter();
     }
     else if (button.id === "alphabet-a") {
-        items.sort((a, b) => b.title.localeCompare(a.title));
+        items.sort((a, b) => b.title.localeCompare(a.title)); // alphabetic
         applyFilter();
     }
     else if (button.id === "alphabet-z") {
-        items.sort((a, b) => a.title.localeCompare(b.title));
+        items.sort((a, b) => a.title.localeCompare(b.title)); // reverse alphabetical
         applyFilter();
     }
 }
@@ -321,7 +279,7 @@ const searchModeToggle = document.querySelector(".filter-bar__search-mode");
 const itemButtons = document.querySelectorAll(".market-item__purchase-button");
 const sortingOptions = document.querySelectorAll(".sorting__button");
 
-const items = [ // i dont like how much space it was taking up
+const items = [ // i dont like how much space it was taking up so i gigacondensed it
     {"title": "12 Pack Coke Zero", "price": 14.99, "img_src": "images/coke-zero-pack.png", "filters": ["DRINKS"],},
     { "title": "12 Pack Cherry Coke Zero", "price": 16.99, "img_src": "images/coke-zero-cherry-pack.png", "filters": ["DRINKS"],},
     {"title": "Boston Kreme Donut", "price": 1.79, "img_src": "images/boston-kreme-donut.png", "filters": ["CHOCOLATE", "DESSERT"],},
@@ -343,13 +301,15 @@ const items = [ // i dont like how much space it was taking up
     {"title": "CARDSTOCK",  "price": 0.09, "img_src": "images/cardstock.png", "filters": [],},
     { "title": "Hershey's Cookies and Cream Bar", "price": 2.99, "img_src": "images/hersheys-cnc.png", "filters": ["CHOCOLATE", "DESSERT"],},
 ]
+
+// filter stuff
 const filterButtons = document.querySelectorAll(".filter-bar__button");
-const filtersActive = []
+const filtersActive = []; // filters already using
 let filterMode = "ANY"; // ANY or ALL
 
-const itemsPurchased = [];
-const clearButton = document.querySelector(".checkout__clear")
-const checkoutButton = document.querySelector(".checkout__button");
+const itemsPurchased = []; // items in the cart
+const clearButton = document.querySelector(".checkout__clear"); // clears cart
+const checkoutButton = document.querySelector(".checkout__button"); // buys the stuff in the cart
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -373,11 +333,11 @@ checkoutButton.addEventListener("click", () => {
 })
 
 clearButton.addEventListener("click", () => {
-    itemsPurchased.length = 0;
+    itemsPurchased.length = 0; // i dont like how javascript does this but whatever
     updateCart();
 })
 
-searchModeToggle.addEventListener("click", function() {
+searchModeToggle.addEventListener("click", function() { // toggles the search mode from any to all
     if (filterMode === "ANY") {
         filterMode = "ALL";
         this.classList.add("active");
