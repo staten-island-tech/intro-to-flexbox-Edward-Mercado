@@ -131,6 +131,12 @@ function applyFilter() {
             })
         }
     }
+    let itemButtons = document.querySelectorAll(".market-item__purchase-button");
+    itemButtons.forEach(button => {
+    console.log(button);
+    button.addEventListener("click", () => {addToCart(button)})
+})
+
 } // nesting code is a passion
 
 function changeFilterButton(button) { // changes the filter button from active to not and vice versa
@@ -306,9 +312,8 @@ const filterButtons = document.querySelectorAll(".filter-bar__button");
 const filtersActive = []; // filters already using
 let filterMode = "ANY"; // ANY or ALL
 
-const itemsPurchased = []; // items in the cart
-const clearButton = document.querySelector(".checkout__clear"); // clears cart
-const checkoutButton = document.querySelector(".checkout__button"); // buys the stuff in the cart
+const itemsPurchased = [];
+const checkoutButton = document.querySelector(".checkout__button");
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -319,23 +324,12 @@ filterButtons.forEach(button => {
 
 items.forEach(item => inject_item(item));
 
-const itemButtons = document.querySelectorAll(".market-item__purchase-button");
-itemButtons.forEach(button => {
-    button.addEventListener("click", () => {addToCart(button)});
-})
-
 sortingOptions.forEach(button => {
     button.addEventListener("click", () => {applySorting(button, sortingOptions)})
 })
 
-
 checkoutButton.addEventListener("click", () => {
     buyItems(itemsPurchased);
-})
-
-clearButton.addEventListener("click", () => {
-    itemsPurchased.length = 0; // i dont like how javascript does this but whatever
-    updateCart();
 })
 
 searchModeToggle.addEventListener("click", function() { // toggles the search mode from any to all
@@ -349,5 +343,4 @@ searchModeToggle.addEventListener("click", function() { // toggles the search mo
     applyFilter();
 });
 
-applyFilter(); // i dunno there's a bug where buttons don't add to cart until you put a filter
-// so i just have that here now (it doesn't do anything except putting a filter that already exists)
+applyFilter();
