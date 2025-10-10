@@ -276,7 +276,6 @@ function applySorting(button, sortingButtons) { // applies the sorting order to 
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
-const itemButtons = document.querySelectorAll(".market-item__purchase-button");
 const sortingOptions = document.querySelectorAll(".sorting__button");
 
 const items = [ // i dont like how much space it was taking up so i gigacondensed it
@@ -319,8 +318,10 @@ filterButtons.forEach(button => {
 )
 
 items.forEach(item => inject_item(item));
+
+const itemButtons = document.querySelectorAll(".market-item__purchase-button");
 itemButtons.forEach(button => {
-    button.addEventListener("click", () => {addToCart(button)})
+    button.addEventListener("click", () => {addToCart(button)});
 })
 
 sortingOptions.forEach(button => {
@@ -349,4 +350,4 @@ searchModeToggle.addEventListener("click", function() { // toggles the search mo
 });
 
 applyFilter(); // i dunno there's a bug where buttons don't add to cart until you put a filter
-// so i just have that here now (it doens't do anything except putting a filter that already exists)
+// so i just have that here now (it doesn't do anything except putting a filter that already exists)
