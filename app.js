@@ -257,54 +257,60 @@ function insertCartItem(item, quantity) {
 
 function applySorting(button, sortingButtons) { // applies the sorting order to items
     sortingButtons.forEach(btn => {
-        if(btn.classList.contains("active")) {
+        if(!btn===button && btn.classList.contains("active")) {
             btn.classList.remove("active");
         }
     })
-    button.classList.add("active");
-    
-    if (button.id ==="price-low") {
-        items.sort((a, b) => b.price - a.price); // sorts from low to high
+    if(button.classList.contains("active")) {
+        button.classList.remove("active");
+        items.sort((a, b) => b.item_id - a.item_id);
         applyFilter();
     }
-    else if (button.id === "price-high") {
-        items.sort((a, b) => a.price - b.price); // sorts from high to low
-        applyFilter();
-    }
-    else if (button.id === "alphabet-a") {
-        items.sort((a, b) => b.title.localeCompare(a.title)); // alphabetic
-        applyFilter();
-    }
-    else if (button.id === "alphabet-z") {
-        items.sort((a, b) => a.title.localeCompare(b.title)); // reverse alphabetical
-        applyFilter();
-    }
+    else {
+        button.classList.add("active");
+        if (button.id ==="price-low") {
+            items.sort((a, b) => b.price - a.price); // sorts from low to high
+            applyFilter();
+        }
+        else if (button.id === "price-high") {
+            items.sort((a, b) => a.price - b.price); // sorts from high to low
+            applyFilter();
+        }
+        else if (button.id === "alphabet-a") {
+            items.sort((a, b) => b.title.localeCompare(a.title)); // alphabetic
+            applyFilter();
+        }
+        else if (button.id === "alphabet-z") {
+            items.sort((a, b) => a.title.localeCompare(b.title)); // reverse alphabetical
+            applyFilter();
+        }
+    } 
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
 const sortingOptions = document.querySelectorAll(".sorting__button");
 
 const items = [ // i dont like how much space it was taking up so i gigacondensed it
-    {"title": "12 Pack Coke Zero", "price": 14.99, "img_src": "images/coke-zero-pack.png", "filters": ["DRINKS"],},
-    { "title": "12 Pack Cherry Coke Zero", "price": 16.99, "img_src": "images/coke-zero-cherry-pack.png", "filters": ["DRINKS"],},
-    {"title": "Boston Kreme Donut", "price": 1.79, "img_src": "images/boston-kreme-donut.png", "filters": ["CHOCOLATE", "DESSERT"],},
-    {"title": "Pastry Frank", "price": 4.69, "img_src": "images/pastry-frank.png", "filters": ["SAVORY", "DESSERT"],},
-    {"title": "10 Pack Pocky - Chocolate", "price": 24.99, "img_src": "images/pocky.png", "filters": ["CHOCOLATE"],},
-    {"title": "Oishi Salt and Vinegar Chips", "price": 1.49, "img_src": "images/oishi-salt-and-vinegar.png","filters": ["SAVORY"],},
-    {"title": "12 Pack Kinder Bueno", "price": 11.99, "img_src": "images/kinder-bueno.png", "filters": ["CHOCOLATE"],},
-    {"title": "30 Pack - Premier Protein Shake Chocolate", "price": 15.99, "img_src": "images/premier-protein.png", "filters": ["DRINKS", "CHOCOLATE"],},
-    {"title": "Snack Size Haribo Goldbears", "price": 1.99, "img_src": "images/haribo-goldbear.png", "filters": ["CANDY"],},
-    {"title": "Tuxedo Cake", "price": 18.99, "img_src": "images/tuxedo-cake.png", "filters": ["DESSERT", "CHOCOLATE"],},
-    {"title": "6 Pack Tate's Bake Shop Cookies", "price": 24.99, "img_src": "images/tates-cookies.png", "filters": ["DESSERT"],},
-    { "title": "6 Pack Fruit by the Foot", "price": 3.69, "img_src": "images/fruit-by-the-foot.png", "filters": ["CANDY"],},
-    {"title": "Sausage Egg and Cheese Croissant", "price": 4.99, "img_src": "images/sausage-egg-cheese-croissant.png", "filters": ["SAVORY"],},
-    {"title": "Butter Croissant", "price": 2.79, "img_src": "images/butter-croissant.png", "filters": ["SAVORY"],},
-    {"title": "10 Pack Pocky - Strawberry", "price": 24.99, "img_src": "images/pocky-strawberry.png", "filters": ["DESSERT"],},
-    {"title": "Haribo Twin Snakes", "price": 3.99, "img_src": "images/haribo-twin-snakes.webp", "filters": ["CANDY"],},
-    {"title": "6 Pack Mallomars", "price": 4.49, "img_src": "images/mallomars.png", "filters": ["CHOCOLATE", "DESSERT"],},
-    {"title": "6 Pack Fruit Roll Ups", "price": 4.99, "img_src": "images/fruit-roll-up.png", "filters": ["CANDY"],},
-    {"title": "CARDSTOCK",  "price": 0.09, "img_src": "images/cardstock.png", "filters": [],},
-    { "title": "Hershey's Cookies and Cream Bar", "price": 2.99, "img_src": "images/hersheys-cnc.png", "filters": ["CHOCOLATE", "DESSERT"],},
+    {"title": "12 Pack Coke Zero", "price": 14.99, "img_src": "images/coke-zero-pack.png", "filters": ["DRINKS"], "item_id": 0},
+    { "title": "12 Pack Cherry Coke Zero", "price": 16.99, "img_src": "images/coke-zero-cherry-pack.png", "filters": ["DRINKS"], "item_id": 1},
+    {"title": "Boston Kreme Donut", "price": 1.79, "img_src": "images/boston-kreme-donut.png", "filters": ["CHOCOLATE", "DESSERT"], "item_id": 2},
+    {"title": "Pastry Frank", "price": 4.69, "img_src": "images/pastry-frank.png", "filters": ["SAVORY", "DESSERT"], "item_id": 3},
+    {"title": "10 Pack Pocky - Chocolate", "price": 24.99, "img_src": "images/pocky.png", "filters": ["CHOCOLATE"], "item_id": 4},
+    {"title": "Oishi Salt and Vinegar Chips", "price": 1.49, "img_src": "images/oishi-salt-and-vinegar.png","filters": ["SAVORY"], "item_id": 5},
+    {"title": "12 Pack Kinder Bueno", "price": 11.99, "img_src": "images/kinder-bueno.png", "filters": ["CHOCOLATE"], "item_id": 6},
+    {"title": "30 Pack - Premier Protein Shake Chocolate", "price": 15.99, "img_src": "images/premier-protein.png", "filters": ["DRINKS", "CHOCOLATE"], "item_id": 7},
+    {"title": "Snack Size Haribo Goldbears", "price": 1.99, "img_src": "images/haribo-goldbear.png", "filters": ["CANDY"], "item_id": 8},
+    {"title": "Tuxedo Cake", "price": 18.99, "img_src": "images/tuxedo-cake.png", "filters": ["DESSERT", "CHOCOLATE"], "item_id": 9},
+    {"title": "6 Pack Tate's Bake Shop Cookies", "price": 24.99, "img_src": "images/tates-cookies.png", "filters": ["DESSERT"], "item_id": 10},
+    { "title": "6 Pack Fruit by the Foot", "price": 3.69, "img_src": "images/fruit-by-the-foot.png", "filters": ["CANDY"], "item_id": 11},
+    {"title": "Sausage Egg and Cheese Croissant", "price": 4.99, "img_src": "images/sausage-egg-cheese-croissant.png", "filters": ["SAVORY"], "item_id": 12},
+    {"title": "Butter Croissant", "price": 2.79, "img_src": "images/butter-croissant.png", "filters": ["SAVORY"], "item_id": 13},
+    {"title": "10 Pack Pocky - Strawberry", "price": 24.99, "img_src": "images/pocky-strawberry.png", "filters": ["DESSERT"], "item_id": 14},
+    {"title": "Haribo Twin Snakes", "price": 3.99, "img_src": "images/haribo-twin-snakes.webp", "filters": ["CANDY"], "item_id": 15},
+    {"title": "6 Pack Mallomars", "price": 4.49, "img_src": "images/mallomars.png", "filters": ["CHOCOLATE", "DESSERT"], "item_id": 16},
+    {"title": "6 Pack Fruit Roll Ups", "price": 4.99, "img_src": "images/fruit-roll-up.png", "filters": ["CANDY"], "item_id": 17},
+    {"title": "CARDSTOCK",  "price": 0.09, "img_src": "images/cardstock.png", "filters": [], "item_id": 18},
+    { "title": "Hershey's Cookies and Cream Bar", "price": 2.99, "img_src": "images/hersheys-cnc.png", "filters": ["CHOCOLATE", "DESSERT"], "item_id": 19},
 ]
 
 // filter stuff
