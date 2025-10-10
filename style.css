@@ -32,7 +32,7 @@ body {
 .sorting {
   margin: 20px;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 
@@ -55,6 +55,7 @@ body {
   width: 19%;
   text-align: center;
   align-items: center;
+
 }
 .sorting__button:hover {
   color: rgb(5, 37, 58);
