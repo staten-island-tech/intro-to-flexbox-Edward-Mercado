@@ -133,7 +133,6 @@ function applyFilter() {
     }
     let itemButtons = document.querySelectorAll(".market-item__purchase-button");
     itemButtons.forEach(button => {
-    console.log(button);
     button.addEventListener("click", () => {addToCart(button)})
 })
 
@@ -256,12 +255,16 @@ function insertCartItem(item, quantity) {
 }
 
 function applySorting(button, sortingButtons) { // applies the sorting order to items
+    let button_active = button.classList.contains("active");
+    console.log(button_active);
+
     sortingButtons.forEach(btn => {
-        if(!btn===button && btn.classList.contains("active")) {
+        if(btn.classList.contains("active")) {
             btn.classList.remove("active");
         }
     })
-    if(button.classList.contains("active")) {
+
+    if(button_active) {
         button.classList.remove("active");
         items.sort((a, b) => b.item_id - a.item_id);
         applyFilter();
