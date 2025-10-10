@@ -332,6 +332,33 @@ h1 {
   animation: buy-items 0.2s ease;
 }
 
+.checkout__clear {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5em;
+
+  color: black;
+  border: 1px black solid;
+
+  background-color: rgb(90, 148, 165);
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  height: 50px;
+}
+
+.checkout__clear:hover {
+  color: rgb(255, 255, 255);
+
+  background-color: rgb(44, 106, 124);
+}
+
+.checkout__clear:active {
+  animation: button-press 0.2s ease;
+}
+
 .checkout__card {
   display: flex;
   flex-flow: column nowrap;

@@ -314,6 +314,7 @@ let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
 const checkoutButton = document.querySelector(".checkout__button");
+const clearCartButton = document.querySelector(".checkout__clear");
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -330,6 +331,11 @@ sortingOptions.forEach(button => {
 
 checkoutButton.addEventListener("click", () => {
     buyItems(itemsPurchased);
+})
+
+clearCartButton.addEventListener("click", () => {
+    itemsPurchased.length = 0;
+    updateCart();
 })
 
 searchModeToggle.addEventListener("click", function() { // toggles the search mode from any to all
