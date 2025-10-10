@@ -294,6 +294,7 @@ const searchModeToggle = document.querySelector(".filter-bar__search-mode");
 const sortingOptions = document.querySelectorAll(".sorting__button");
 
 const items = [ // i dont like how much space it was taking up so i gigacondensed it
+    // item_id does literally nothing its just to filter when i have no filters and its the order i thought of them when making the cards
     {"title": "12 Pack Coke Zero", "price": 14.99, "img_src": "images/coke-zero-pack.png", "filters": ["DRINKS"], "item_id": 0},
     { "title": "12 Pack Cherry Coke Zero", "price": 16.99, "img_src": "images/coke-zero-cherry-pack.png", "filters": ["DRINKS"], "item_id": 1},
     {"title": "Boston Kreme Donut", "price": 1.79, "img_src": "images/boston-kreme-donut.png", "filters": ["CHOCOLATE", "DESSERT"], "item_id": 2},
