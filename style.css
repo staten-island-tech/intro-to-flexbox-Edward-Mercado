@@ -420,8 +420,8 @@ h1 {
   left: 78%;
   width: 20%;
   height: 20%;
-  background-color: rgba(255, 255, 255, 0.666);
-  border: rgb(255, 255, 255) 3px solid;
+  background-color: rgba(255, 255, 255, 0.875);
+  border: rgb(209, 224, 226) 3px solid;
   border-radius: 10px;
   animation: receipt-popup 0.21s ease 1;
 }

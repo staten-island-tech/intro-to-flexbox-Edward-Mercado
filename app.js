@@ -314,7 +314,7 @@ let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
 const checkoutButton = document.querySelector(".checkout__button");
-const clearCartButton = document.querySelector(".checkout__clear");
+const clearCartButton = document.querySelector(".checkout__clear")
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
