@@ -27,6 +27,9 @@ function buyItems() { // makes the receipt and buys your stuff
     if (receipt_notification) { // only one receipt at a time
         receipt_notification.remove();
     }
+
+    let taxed_total = 1.0875 * total_cost
+
     display.insertAdjacentHTML("afterbegin", `
         <div class="receipt-notification">
         <div class="receipt-notification__img-container">
@@ -36,7 +39,7 @@ function buyItems() { // makes the receipt and buys your stuff
                 ${ receipt_flavor_text }
             </h2>
             <h2 class="receipt-notification__cost">
-                Total Spent: $${ total_cost }
+                Total Spent: $${ taxed_total.toFixed(2) }
             </h2>
         </div>
         `)
@@ -185,6 +188,10 @@ function addToCart(button) { // adds an item into the cart
     updateCart();
 }
 
+function tax(total_cost) {
+    return (total_cost*0.0875).toFixed(2);
+}
+
 function updateCart() { // cart update function, changes what is in the checkout
     itemsAdded = [];
     
@@ -227,7 +234,12 @@ function updateCart() { // cart update function, changes what is in the checkout
     let total_text = document.querySelector(".checkout__total-text");
 
     if (total_text) { // if we have the total text already (which we always should)
-        total_text.textContent = `TOTAL COST: $${ total_cost }`;
+        if (itemsPurchased.length !== 0) {
+            total_text.textContent = `TOTAL COST: $${ total_cost } (+ $${ tax(total_cost) } tax) = $${ (1.0875*total_cost).toFixed(2) }`;
+        }
+        else {
+            total_text.textContent = `TOTAL COST: $${ total_cost }`;
+        }
     }
 }
 
