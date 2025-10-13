@@ -131,6 +131,31 @@ body {
   animation: button-press 0.2s ease;
 }
 
+#no-items-found {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16em;
+  text-align: center;
+  margin: 10% auto;
+  margin-top: 15%;
+  width: 80%;
+  background-color: rgba(116, 183, 211, 0.662);
+}
+#no-items-found:hover {
+  animation: rotate-item 5s infinite ease-in-out;
+}
+
+.no-items-found__text {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: .9em;
+  text-align: center;
+}
+
 .lexend-item-title {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
@@ -602,5 +627,17 @@ h1 {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes rotate-item {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }

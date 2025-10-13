@@ -305,16 +305,28 @@ function searchForItems(itemQuery) {
     const marketItems = document.querySelectorAll(".market-item");
     marketItems.forEach((item) => { item.remove() });
 
+    let foundOneItem = false;
     items.forEach((item) => {
         let itemTitle = item.title.toLowerCase();
         if (itemTitle.includes(itemQuery)) {
+            foundOneItem = true;
             inject_item(item);
         }
     })
     let itemButtons = document.querySelectorAll(".market-item__purchase-button");
     itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)});
-})
+    })
+    if(!foundOneItem) {
+        display = document.querySelector(".container");
+        
+        // i give this the class market-item so it gets destroyed when i load more items
+        display.insertAdjacentHTML("afterbegin", `
+        <div class="market-item" id="no-items-found">
+            <h2 class="no-items-found__text"> NO ITEMS FOUND :/ </h2>
+        </div>
+    `)
+    }
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
