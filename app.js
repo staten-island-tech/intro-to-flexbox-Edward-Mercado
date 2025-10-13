@@ -136,7 +136,7 @@ function applyFilter() {
     }
     let itemButtons = document.querySelectorAll(".market-item__purchase-button");
     itemButtons.forEach(button => {
-    button.addEventListener("click", () => {addToCart(button)})
+    button.addEventListener("click", () => {addToCart(button)});
 })
 
 } // nesting code is a passion
@@ -268,7 +268,6 @@ function insertCartItem(item, quantity) {
 
 function applySorting(button, sortingButtons) { // applies the sorting order to items
     let button_active = button.classList.contains("active");
-    console.log(button_active);
 
     sortingButtons.forEach(btn => {
         if(btn.classList.contains("active")) {
@@ -300,6 +299,22 @@ function applySorting(button, sortingButtons) { // applies the sorting order to 
             applyFilter();
         }
     } 
+}
+
+function searchForItems(itemQuery) {
+    const marketItems = document.querySelectorAll(".market-item");
+    marketItems.forEach((item) => { item.remove() });
+
+    items.forEach((item) => {
+        let itemTitle = item.title.toLowerCase();
+        if (itemTitle.includes(itemQuery)) {
+            inject_item(item);
+        }
+    })
+    let itemButtons = document.querySelectorAll(".market-item__purchase-button");
+    itemButtons.forEach(button => {
+    button.addEventListener("click", () => {addToCart(button)});
+})
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
@@ -337,6 +352,21 @@ let filterMode = "ANY"; // ANY or ALL
 const itemsPurchased = [];
 const checkoutButton = document.querySelector(".checkout__button");
 const clearCartButton = document.querySelector(".checkout__clear")
+
+const form = document.getElementById("itemForm");
+const formClearButton = document.querySelector(".search-box__clear");
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let itemQuery = document.getElementById("search-query").value.toLowerCase();
+    searchForItems(itemQuery);
+    form.reset();
+})
+
+formClearButton.addEventListener("click", () => {
+    searchForItems("");
+    form.reset();
+})
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
