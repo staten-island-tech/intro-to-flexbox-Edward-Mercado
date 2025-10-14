@@ -134,6 +134,10 @@ function applyFilter() {
             })
         }
     }
+
+    let searchContentBoxes = document.querySelectorAll(".search-content-box");
+    searchContentBoxes.forEach(box => box.remove());
+    
     let itemButtons = document.querySelectorAll(".market-item__purchase-button");
     itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)});
