@@ -107,34 +107,26 @@ function removeReceiptWindow() {
 
 function applyFilter() {
     // uses filtersActive to filter items
-
     const marketItems = document.querySelectorAll(".market-item");
     marketItems.forEach(item => item.remove()); // gets rid of every item on the screen right now
     filtersActive.sort(); // sorts our filters, i really don't need to do this, 
     // i just did? i coded this a few days ago
     if (filtersActive.length === 0) { // if we have no filters, then show everything
-        items.forEach(item => {
-            if (item.title.includes(currentSearchQuery))
-            {
-                inject_item(item)
-            }
-            });
+        items.forEach(item => inject_item(item));
     }
     else {
         if (filterMode === "ANY") { // if we want any filter
             filtersActive.forEach(filter => {
                 items.forEach(
                     item => {
-                        let followsFilter = item.title.includes(currentSearchQuery);
-                        if (item.filters.includes(filter) && followsFilter === true) {
+                        if (item.filters.includes(filter)) {
                             inject_item(item);
                         }})})
         }
         else if (filterMode === "ALL") { // if we need all filters
             items.forEach(item => { // check every item
                 for (let i=0;i<filtersActive.length;i++) {
-                    let followsFilter = item.title.includes(currentSearchQuery);
-                    if (!item.filters.includes(filtersActive[i]) && followsFilter === false) {
+                    if (!item.filters.includes(filtersActive[i])) {
                         return // if it does not have a single filter, return and end it
                     }
                 }
@@ -143,6 +135,9 @@ function applyFilter() {
         }
     }
 
+    let searchContentBoxes = document.querySelectorAll(".search-content-box");
+    searchContentBoxes.forEach(box => box.remove());
+    
     let itemButtons = document.querySelectorAll(".market-item__purchase-button");
     itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)});
@@ -353,8 +348,7 @@ function searchForItems(itemQuery) {
     if (itemQuery === "") {
         let searchContentBoxes = document.querySelectorAll(".search-content-box");
         searchContentBoxes.forEach(box => box.remove());
-    }     
-    currentSearchQuery = itemQuery;
+    }       
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
@@ -395,7 +389,6 @@ const clearCartButton = document.querySelector(".checkout__clear")
 
 const form = document.getElementById("itemForm");
 const formClearButton = document.querySelector(".search-box__clear");
-let currentSearchQuery = "";
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
