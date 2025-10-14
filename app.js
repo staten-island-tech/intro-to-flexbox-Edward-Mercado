@@ -245,6 +245,13 @@ function updateCart() { // cart update function, changes what is in the checkout
             total_text.textContent = `TOTAL COST: $${ total_cost }`;
         }
     }
+
+    let itemsPurchasedStrings = []
+    itemsPurchased.forEach((item) => {
+        itemsPurchasedStrings.push(item.title)
+    })
+
+    localStorage.setItem("cartItems", itemsPurchasedStrings);
 }
 
 function getPriceForThese(item, quantity) { // gets the price for one class of item
@@ -384,6 +391,22 @@ const filtersActive = []; // filters already using
 let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
+
+if (localStorage.getItem("cartItems") !== undefined) {
+    const cartStorageUnseperated = localStorage.getItem("cartItems");
+    const cartStorage = cartStorageUnseperated.split(",")
+
+    cartStorage.forEach((itemInCart) => {
+        for(i=0;i<items.length;i++) {
+            if (itemInCart === items[i].title ) {
+                itemsPurchased.push(items[i]);
+            }
+        }
+        })
+    updateCart();
+}
+
+
 const checkoutButton = document.querySelector(".checkout__button");
 const clearCartButton = document.querySelector(".checkout__clear")
 
