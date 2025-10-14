@@ -87,8 +87,8 @@ body {
 .search-box__text:focus {
   outline: none;
   transform: scale(1.05);
-  border: 5px solid rgb(17, 77, 96);
-  background-color: rgb(208, 249, 255);
+  border: 5px solid rgb(17, 70, 96);
+  background-color: rgb(243, 253, 255);
   transition: 0.4s ease-in-out;
 }
 ::placeholder {
