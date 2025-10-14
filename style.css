@@ -88,14 +88,11 @@ body {
   outline: none;
   transform: scale(1.05);
   border: 5px solid rgb(17, 77, 96);
-  background-color: rgb(238, 253, 255);
+  background-color: rgb(208, 249, 255);
   transition: 0.4s ease-in-out;
 }
 ::placeholder {
   color:rgb(24, 63, 104)
-}
-::placeholder:focus {
-  color: black;
 }
 
 .search-box__button {
