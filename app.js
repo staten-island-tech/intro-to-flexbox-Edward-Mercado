@@ -305,11 +305,11 @@ function searchForItems(itemQuery) {
     const marketItems = document.querySelectorAll(".market-item");
     marketItems.forEach((item) => { item.remove() });
 
-    let foundOneItem = false;
+    let itemsFound = 0;
     items.forEach((item) => {
         let itemTitle = item.title.toLowerCase();
         if (itemTitle.includes(itemQuery)) {
-            foundOneItem = true;
+            itemsFound ++;
             inject_item(item);
         }
     })
@@ -317,7 +317,7 @@ function searchForItems(itemQuery) {
     itemButtons.forEach(button => {
     button.addEventListener("click", () => {addToCart(button)});
     })
-    if(!foundOneItem) {
+    if(itemsFound === 0) {
         display = document.querySelector(".container");
         
         // i give this the class market-item so it gets destroyed when i load more items
@@ -327,6 +327,24 @@ function searchForItems(itemQuery) {
         </div>
     `)
     }
+
+    let body = document.querySelector("body");
+    let pluralization = "";
+    if (itemsFound !== 1) {
+        pluralization = "S";
+    }
+
+    let searchContentBoxes = document.querySelectorAll(".search-content-box");
+    searchContentBoxes.forEach(box => box.remove());
+
+    body.insertAdjacentHTML("afterbegin", `
+        <div class="search-content-box"> SEARCHING FOR... "${ itemQuery.toUpperCase() }": ${ itemsFound } RESULT${pluralization} </div>
+    `);
+
+    if (itemQuery === "") {
+        let searchContentBoxes = document.querySelectorAll(".search-content-box");
+        searchContentBoxes.forEach(box => box.remove());
+    }       
 }
 
 const searchModeToggle = document.querySelector(".filter-bar__search-mode");
