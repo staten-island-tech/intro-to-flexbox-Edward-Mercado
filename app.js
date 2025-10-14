@@ -406,7 +406,6 @@ if (localStorage.getItem("cartItems") !== undefined) {
     updateCart();
 }
 
-
 const checkoutButton = document.querySelector(".checkout__button");
 const clearCartButton = document.querySelector(".checkout__clear")
 
