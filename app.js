@@ -392,7 +392,7 @@ let filterMode = "ANY"; // ANY or ALL
 
 const itemsPurchased = [];
 
-if (typeof localStorage.getItem("cartItems") === "string") {
+if (localStorage.getItem("cartItems")) {
     const cartStorageUnseperated = localStorage.getItem("cartItems");
     const cartStorage = cartStorageUnseperated.split(",")
 
